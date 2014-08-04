@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140804145251) do
+ActiveRecord::Schema.define(version: 20140804182154) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "likes", force: true do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "story_id",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "likes", ["user_id", "story_id"], name: "index_likes_on_user_id_and_story_id", unique: true, using: :btree
 
   create_table "stories", force: true do |t|
     t.string   "image",      default: "", null: false

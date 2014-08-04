@@ -1,3 +1,14 @@
-<%= render @story %>
+<div>
+  <%= @story.title %>
+<div>
+  <%= @story.body %>
+</div>
+<div>
+  <%= @story.image %>
+</div>
+<div>
+  Created by: <%= @story.user.username %>
+</div>
+
 <%= link_to "Edit Story", [:edit, @story] %>
 <%= link_to "Delete Story", [@story], method: :delete %>
