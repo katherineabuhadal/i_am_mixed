@@ -1,0 +1,22 @@
+<div class="cards">
+  <% @stories.each do |story| %>
+    <div class="card">
+      <div class="card-image">
+        <%= image_tag story.image %>
+      </div>
+      <div class="card-header">
+        <%= story.title %>
+      </div>
+      <div class="card-copy">
+        <p><%= story.body %></p>
+      </div>
+      <div class="card-stats">
+        <ul>
+          <li>98<span>Likes</span></li>
+          <li>298<span>Shares</span></li>
+          <li>923<span>Responses</span></li>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+</div>
