@@ -1,12 +1,38 @@
-<%= form_for :session, url: session_path do |form| %>
-  <div>
-    <%= form.text_field :username, placeholder: "Username" %>
+<div class="landing-sign-in">
+  <div class="join">
+    <h3>Become a part of our diverse community today!</h3>
+    <p>Find people just like you</p>
+    <p>Share stories, personal experiences, and photos</p>
+    <p>Create groups to connect with others</p>
+
+    <div class="sign-in-box">
+      <%= form_for :session, url: session_path  do |form| %>
+        <div>
+          <%= form.text_field :username, placeholder: "Enter your username" %>
+        </div>
+        <div>
+          <%= form.password_field :password, placeholder: "Enter your password" %>
+        </div>
+        <div>
+          <%= form.submit "Sign in", class: "button" %>
+        </div>
+      <% end %>
+    </div>
+    <div>
+      <p>Not a current user?</p>
+      <p><%= link_to "Join today!", "/sign-up" %></p>
+    </div>
   </div>
-  <div>
-    <%= form.label :password %>
-    <%= form.password_field :password %>
+
+  <div class="browse">
+    <h3>Not ready to join but want to see what we are about?</h3>
+    <p>Browse galleries and search users</p>
+    <%= button_to "Browse", :stories, method: :get %>
   </div>
-  <div>
-    <%= form.submit "Sign in" %>
+</div>
+
+<section class="footers">
+  <div class="bottom-text">
+    <%= render 'bottom_nav_menu' %>
   </div>
-<% end %>
+</section>

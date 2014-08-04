@@ -1,7 +1,7 @@
 <%= render "search" %>
 
 <div class="cards">
-  <%= render @stories %>
+  <%= render @stories.recent %>
 </div>
 
 <%= link_to "Add a new Story", [:new, :story] %>

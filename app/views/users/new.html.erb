@@ -1,16 +1,26 @@
-<%= form_for @user do |form| %>
+<div class="landing-sign-in">
   <div>
-    <%= form.label :email %>
-    <%= form.email_field :email %>
+    <h3> Sign up! </h3>
+    <p> (it's free) </p>
   </div>
-  <div>
-    <%= form.text_field :username, placeholder: "Enter a username" %>
-  </div>
-  <div>
-    <%= form.label :password %>
-    <%= form.password_field :password %>
-  </div>
-  <div>
-    <%= form.submit "Sign up" %>
-  </div>
-<% end %>
+  <%= form_for @user do |form| %>
+    <div>
+      <%= form.label :email %>
+      <%= form.email_field :email %>
+    </div>
+    <div>
+      <%= form.text_field :username, placeholder: "Enter a username" %>
+    </div>
+    <div>
+      <%= form.label :password %>
+      <%= form.password_field :password %>
+    </div>
+    <div>
+      <%= form.submit "Sign up" %>
+    </div>
+  <% end %>
+</div>
+
+<div class="bottom_text">
+  <%= render "bottom_nav_menu" %>
+</div>

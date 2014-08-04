@@ -1,4 +1,6 @@
 class LikesController < ApplicationController
+  before_action :require_login, only: [:create, :destroy]
+
   def create
     @story = Story.find(params[:story_id])
     current_user.like(@story)

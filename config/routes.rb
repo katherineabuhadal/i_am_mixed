@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
   resources :stories do 
     resource :like, only: [:create, :destroy]
+    resources :responses, only: [:create]
   end
 
   get "/sign-up", to: "users#new", as: :sign_up

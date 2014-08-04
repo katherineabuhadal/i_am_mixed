@@ -12,17 +12,21 @@
     <ul>
       <li><%= story.likes.count %><span>Likes</span></li>
       <li>298<span>Shares</span></li>
-      <li>923<span>Responses</span></li>
+      <li><%= story.responses.count %><span>Responses</span></li>
     </ul>
   </div>
   <div class="card-footer">
     <ul>
-      <% if current_user.likes?(story) %>
+      <% if signed_in? && current_user.likes?(story) %>
         <li><%= link_to "UnHeart it", [story, :like], method: :delete %></li>
       <% else %>
         <li><%= link_to "Heart it", [story, :like], method: :post %></li>
       <% end %>
     </ul>
+    <%= form_for [story, @response] do |form| %>
+      <%= form.text_area :body %>
+      <%= form.submit "Respond" %>
+    <% end %>
     <%= link_to "Click for more", story %>
   </div>
 </div>
