@@ -1,0 +1,5 @@
+<h1><%= link_to "logo", root_path %></h1>
+<% if signed_in? %>
+  Hello, <%= current_user.email %>
+  <%= link_to "Sign out", :session, method: :delete %>
+<% end %>

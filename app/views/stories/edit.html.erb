@@ -1,0 +1,12 @@
+<%= form_for @story do |form| %>
+  <div>
+    <%= form.text_field :title, placeholder: "Title" %>
+  </div>
+  <div>
+    <%= form.text_area :body, placeholder: "Body" %>
+  </div>
+  <div>
+    <%= form.text_field :image, placeholder: "Image URL" %>
+  </div>
+    <%= form.submit "Update Story" %>
+<% end %>

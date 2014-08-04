@@ -14,9 +14,6 @@
   overflow: hidden;
 }
 
-.sign-in-box {
-}
-
 .join {
   @include span-columns(6);
 }
@@ -24,5 +21,3 @@
 .browse {
   @include span-columns(6);
 }
-
-

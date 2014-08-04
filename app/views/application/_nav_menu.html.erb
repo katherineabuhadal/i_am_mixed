@@ -1,0 +1,28 @@
+<header class="navigation">
+  <div class="navigation-wrapper">
+    <a href="javascript:void(0)" class="logo">
+      <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png" alt="">
+    </a>
+    <a href="" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
+    <div class="nav">
+      <ul id="navigation-menu">
+        <li class="nav-link"><a href="/search">Search</a></li>
+        <li class="nav-link"><a href="/profile">My profile</a></li>
+        <li class="nav-link"><a href="/about">About</a></li>
+        <li class="nav-link"><a href="/contact">Contact</a></li>
+        <li class="nav-link"><a href="/groups">Groups</a></li>
+      </ul>
+    </div>
+    <div class="navigation-tools">
+      <div class="search-bar">
+        <div class="search-and-submit">
+          <input type="search" placeholder="Enter Search" />
+          <button type="submit">
+            <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/search-icon.png" alt="">
+          </button>
+        </div>
+      </div>
+      <%= link_to "Sign up", "/sign-up", class: "sign-up" %> 
+    </div>
+  </div>
+</header>
