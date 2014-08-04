@@ -1,0 +1,4 @@
+.page {
+  @include span-columns(12);
+  // @include shift();
+}

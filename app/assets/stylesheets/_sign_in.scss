@@ -1,0 +1,28 @@
+.landing-sign-in {
+  margin-top: 8em;
+  @include outer-container;
+  @include span-columns(8);
+  @include shift(2);
+  padding: 2em;
+  background-color: white;
+
+  $tab-border-radius: $base-border-radius;
+
+  @include clearfix;
+  border-radius: $tab-border-radius;
+  margin-bottom: $base-line-height;
+  overflow: hidden;
+}
+
+.sign-in-box {
+}
+
+.join {
+  @include span-columns(6);
+}
+
+.browse {
+  @include span-columns(6);
+}
+
+

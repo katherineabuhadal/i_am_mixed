@@ -1,0 +1,12 @@
+.bottom-nav-menu {
+  @include span-columns(6);
+  @include shift(3.5);
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 80px;
+  padding-bottom:10px;
+}
+  .bottom-nav-menu li {
+  display: inline;
+  margin-right: .5em;
+}

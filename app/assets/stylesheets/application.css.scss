@@ -10,6 +10,19 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
  *= require_self
  */
+
+@import "bourbon";
+@import "base/base";
+@import "neat";
+
+@import "body";
+@import "nav_menu";
+@import "search";
+@import "cards";
+@import "page";
+@import "profile_page";
+@import "sign_in";
+@import "bottom_nav_menu";
+@import "footer";
