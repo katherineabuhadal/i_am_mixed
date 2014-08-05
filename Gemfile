@@ -12,3 +12,4 @@ gem 'monban-generators'
 gem 'bourbon'
 gem 'neat'
 gem 'bitters'
+gem "paperclip", "~> 4.1"

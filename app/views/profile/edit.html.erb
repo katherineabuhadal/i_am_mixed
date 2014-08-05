@@ -1,0 +1,14 @@
+<h2>Edit Your profile</h2>
+
+<%= form_for @profile, url: profile_path, html: { multipart: true } do |form| %>
+  <%= form.label :description, "Describe yourself" %>
+  <%= form.text_field :description %>
+
+  <%= form.label :birthday, "Enter your birthday" %>
+  <%= form.date_select :birthday, start_year: 1900 %>
+
+  <%= form.label :avatar, "Upload a profile picture" %>
+  <%= form.file_field :avatar %>
+
+  <%= form.submit "Update Profile" %>
+<% end %>

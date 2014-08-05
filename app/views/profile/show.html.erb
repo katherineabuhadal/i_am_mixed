@@ -1,0 +1,13 @@
+<h2>Welcome to My Profile</h2>
+<p>Here you can add photos, personal information, and create galleries.</p>
+<p><%= link_to "Edit Profile", [:edit, @profile] %></p>
+
+<div>
+  <%= image_tag @profile.avatar.url(:medium), class: "profile-photo" %>
+</div>
+
+<div class="profile-box">
+  <h3><%= @profile.user.username %></h3>
+  <p>Birthday: <%= @profile.birthday %></p>
+  <p><%= @profile.description %></p>
+</div>
