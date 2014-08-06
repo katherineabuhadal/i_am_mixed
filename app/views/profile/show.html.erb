@@ -10,4 +10,7 @@
   <h3><%= @profile.user.username %></h3>
   <p>Birthday: <%= @profile.birthday %></p>
   <p><%= @profile.description %></p>
+  <% @profile.tags.each do |tag| %>
+    <%= link_to tag.name, tag %>
+  <% end %>
 </div>

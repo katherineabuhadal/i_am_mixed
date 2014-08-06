@@ -18,9 +18,10 @@ class ProfileController < ApplicationController
 
   def profile_params
     params.require(:profile).permit(
-      :description, 
-      :avatar, 
-      :birthday
+      :description,
+      :avatar,
+      :birthday,
+      :tag_list,
     )
   end
 end

@@ -1,0 +1,15 @@
+<h2>All Stories tagged with <%= @tag.name %></h2>
+
+<% @tag.stories.each do |story| %>
+  <div>
+    <%= link_to story.title, story %>
+  </div>
+<% end %>
+
+<h2>All Profiles tagged with <%= @tag.name %></h2>
+
+<% @tag.profiles.each do |profile| %>
+  <div>
+    <%= link_to profile.user.username, profile %>
+  </div>
+<% end %>

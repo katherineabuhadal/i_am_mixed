@@ -6,10 +6,18 @@
     <%= @story.body %>
   </div>
   <div>
-    <%= @story.image %>
+    <%= image_tag @story.image %>
   </div>
   <div>
     Created by: <%= @story.user.username %>
+  </div>
+
+  <h2>Tags:</h2>
+
+  <div>
+    <% @story.tags.each do |tag| %>
+      <%= link_to tag.name, tag %>
+    <% end %>
   </div>
 
   <div>
@@ -25,6 +33,7 @@
     </div>
     <div>
       <p>By: <%= response.user.username %></p>
+      <%= image_tag response.user.profile.avatar(:medium), class: "profile-photo" %>
     </div>
     <div>
       <p>Date posted: <%= time_tag response.created_at %></p>

@@ -1,5 +1,9 @@
 class Profile < ActiveRecord::Base
+  include TagListable
+
   belongs_to :user
+  has_many :taggings, as: :taggable
+  has_many :tags, through: :taggings
 
   validates :user, presence: true
 
