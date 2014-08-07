@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
-  resources :users, only: [:new, :create]
-  resources :profile, only: [:show, :edit, :update]
+  resources :users, only: [:new, :create] do
+    resource :profile, only: [:show, :edit, :update]
+    resources :messages, only: [:index, :create, :show]
+  end
   resources :tags, only: [:show]
   resource :search, only: [:show]
-  resources :stories do 
+  resources :stories do
     resource :like, only: [:create, :destroy]
     resources :responses, only: [:create]
   end

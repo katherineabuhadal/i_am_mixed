@@ -7,6 +7,8 @@ class Profile < ActiveRecord::Base
 
   validates :user, presence: true
 
+  delegate :username, to: :user
+
   has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "missing-:style.jpg"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 end

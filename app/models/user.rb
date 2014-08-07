@@ -2,6 +2,9 @@ class User < ActiveRecord::Base
   has_many :stories, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :responses, dependent: :destroy
+  has_many :sent_messages, foreign_key: "sender_id", class_name: "Message", dependent: :destroy
+  has_many :received_messages, foreign_key: "receiver_id", class_name: "Message", dependent: :destroy
+
   has_one :profile, dependent: :destroy
 
   validates :email, presence: true, uniqueness: true

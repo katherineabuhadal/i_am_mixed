@@ -7,7 +7,9 @@
     <div class="nav">
       <ul id="navigation-menu">
         <li class="nav-link"><a href="/search">Search</a></li>
-        <li class="nav-link"><a href="/profile">My profile</a></li>
+        <% if signed_in? %>
+          <li class="nav-link"><%= link_to "My Profile", [current_user, :profile] %></li>
+        <% end %>
         <li class="nav-link"><a href="/about">About</a></li>
         <li class="nav-link"><a href="/contact">Contact</a></li>
         <li class="nav-link"><a href="/groups">Groups</a></li>

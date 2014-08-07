@@ -1,16 +1,26 @@
 <h2>Welcome to My Profile</h2>
 <p>Here you can add photos, personal information, and create galleries.</p>
-<p><%= link_to "Edit Profile", [:edit, @profile] %></p>
+<p><%= link_to "Edit Profile", [:edit, @user, @profile] %></p>
 
 <div>
   <%= image_tag @profile.avatar.url(:medium), class: "profile-photo" %>
 </div>
 
 <div class="profile-box">
-  <h3><%= @profile.user.username %></h3>
+  <h3><%= @profile.username %></h3>
   <p>Birthday: <%= @profile.birthday %></p>
   <p><%= @profile.description %></p>
+
   <% @profile.tags.each do |tag| %>
     <%= link_to tag.name, tag %>
   <% end %>
 </div>
+
+<% if @user != current_user %>
+  <%= form_for [@user, @message] do |form| %>
+    <%= form.text_area :body, placeholder: "Enter message here" %>
+    <%= form.submit "Message" %>
+  <% end %>
+<% end %>
+
+<%= link_to "Inbox", [@user, :messages] %>

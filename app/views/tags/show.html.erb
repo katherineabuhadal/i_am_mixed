@@ -10,6 +10,6 @@
 
 <% @tag.profiles.each do |profile| %>
   <div>
-    <%= link_to profile.user.username, profile %>
+    <%= link_to profile.username, profile.user %>
   </div>
 <% end %>
