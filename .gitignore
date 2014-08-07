@@ -15,3 +15,6 @@
 /log/*.log
 /tmp
 /public/system
+/db/sphinx/*
+/config/*.sphinx.conf
+/log/development.sphinx.pid

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
   resources :profile, only: [:show, :edit, :update]
   resources :tags, only: [:show]
+  resource :search, only: [:show]
   resources :stories do 
     resource :like, only: [:create, :destroy]
     resources :responses, only: [:create]
