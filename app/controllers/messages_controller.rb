@@ -4,10 +4,9 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @receiver = User.find(params[:user_id])
     message = current_user.sent_messages.create(message_params)
     redirect_to [current_user, :profile]
- end
+  end
 
   def show
     @message = current_user.sent_messages.find(params[:id])
@@ -15,7 +14,11 @@ class MessagesController < ApplicationController
 
   private
 
+  def receiver
+    User.find(params[:user_id])
+  end
+
   def message_params
-    params.require(:message).permit(:body).merge(receiver_id: @receiver.id)
+    params.require(:message).permit(:body).merge(receiver_id: receiver.id)
   end
 end
