@@ -1,0 +1,18 @@
+<% @topic.posts.each do |post| %>
+  <div class="post">
+    <%= time_tag post.created_at %>
+  <div class="user-info">
+    <h4><%= post.user.username %></h4>
+    <%= image_tag post.user.profile.avatar(:medium), class: "profile-photo" %>
+  </div>
+  <div class="post-body">
+    <%= post.body %>
+    <%= button_to "Reply", [:new, @forum, @topic, :post], method: :get %>
+    <%= button_to "Edit", [:edit, @forum, @topic], method: :get %>
+    <%= button_to "Delete", [@forum, @topic], confirm: 'Are you sure?', method: :delete %>
+  </div>
+</div>
+<% end %>
+
+<%= link_to "Destroy Topic", [@forum, @topic], method: :delete %> |
+<%= link_to "View All", [@forum, :topics] %>

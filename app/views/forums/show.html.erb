@@ -1,0 +1,22 @@
+<p>Forum name: <%= @forum.name %></p>
+<p>Forum description: <%= @forum.description %></p>
+
+<table>
+  <tr>
+    <th width="60%">Topic Title</th>
+    <th width="10%">Replies</th>
+    <th width="30%">Last Post</th>
+  </tr>
+  <% @forum.topics.each do |topic| %>
+    <tr>
+      <td><%= link_to h(topic.name), [@forum, topic] %></td>
+      <td><%= topic.replies %></td>
+      <td class="right"></td>
+      <td><%= link_to "Show", [@forum, topic] %></td>
+      <td><%= link_to "Edit", [:edit, @forum, topic] %></td>
+      <td><%= link_to "Destroy", [@forum, topic], method: :delete %></td>
+    </tr>
+  <% end %>
+</table>
+ 
+<p><%= link_to "New Topic", [:new, @forum, :topic] %></p>

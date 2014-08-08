@@ -1,0 +1,5 @@
+<%= form_for [@forum, @topic, @post] do |form| %>
+  <%= form.label :body %>
+  <%= form.text_area :body %>
+  <%= form.submit "Reply" %>
+<% end %>

@@ -1,0 +1,11 @@
+<%= form_for [@forum, @topic] do |form| %>
+  <%= form.label :name, "Topic" %>
+  <%= form.text_field :name %>
+
+  <%= form.fields_for :post do |posts_form| %>
+    <%= posts_form.label :body %>
+    <%= posts_form.text_area :body %>
+  <% end %>
+
+  <%= form.submit "Submit" %>
+<% end %>
