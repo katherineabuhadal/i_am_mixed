@@ -1,4 +1,5 @@
-<p>Forum name: <%= @forum.name %></p>
+<% breadcrumb @forum %>
+
 <p>Forum description: <%= @forum.description %></p>
 
 <table>
@@ -18,5 +19,5 @@
     </tr>
   <% end %>
 </table>
- 
+
 <p><%= link_to "New Topic", [:new, @forum, :topic] %></p>

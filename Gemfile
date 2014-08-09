@@ -16,3 +16,5 @@ gem "paperclip", "~> 4.1"
 gem 'mysql2', '~> 0.3.13'
 gem 'thinking-sphinx', '~> 3.1.1'
 gem 'rails_12factor', group: :production
+gem 'kaminari'
+gem 'gretel'

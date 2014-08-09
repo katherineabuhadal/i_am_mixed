@@ -28,7 +28,7 @@ header.navigation {
   }
 
   .logo {
-    float: left;    
+    float: left;
     max-height: $navigation-height;
     padding-left: $navigation-padding;
     padding-right: 2em;
@@ -71,7 +71,7 @@ header.navigation {
     }
   }
 
-  ul#navigation-menu {    
+  ul#navigation-menu {
     -webkit-transform-style: preserve-3d; // stop webkit flicker
     clear: both;
     display: none;
@@ -170,7 +170,7 @@ header.navigation {
         content: '⟩';
         position: absolute;
         right: $navigation-submenu-padding / 2;
-      }      
+      }
     }
 
     &:hover > .submenu {
@@ -258,9 +258,9 @@ header.navigation {
     @include transition (all 0.2s ease-in-out);
     display: inline;
     background: $navigation-nav-button-background;
-    border-radius: $base-border-radius; 
+    border-radius: $base-border-radius;
     color: white;
-    font-size: .8em;  
+    font-size: .8em;
     font-weight: 800;
     text-transform: uppercase;
     padding: .4em .5em;
@@ -281,7 +281,7 @@ header.navigation {
     $search-bar-border: 1px solid $search-bar-border-color;
     $search-bar-background: lighten($search-bar-border-color, 10);
 
-    padding: .85em .6em; 
+    padding: .85em .6em;
     float: left;
     .search-and-submit {
       position: relative;
@@ -320,7 +320,7 @@ header.navigation {
 
     @include media($horizontal-bar-mode) {
       width: 16em;
-      position: relative; 
+      position: relative;
       display: inline-block;
 
       input {
@@ -330,59 +330,3 @@ header.navigation {
     }
   }
 }
-
-// body {
-//   height: 100%;
-//   margin: 0;
-// }
-//
-// .background {
-//   @include outer-container;
-//   max-width: 100%;
-//   @include fill-parent;
-//   background-size:cover;
-//   color: red;
-// }
-//
-// .home {
-//   .background {
-//     background-image: url("/assets/background-landing-pg.png");
-//   }
-// }
-//
-// #landing-sign-in {
-//   @include span-columns(4);
-//   @include shift(4);
-//   padding-top: 200px;
-//   background-color:rgba(0,0,0,0.7);
-//   color: white;
-//   padding: 80px;
-// }
-//
-// .button {
-//   @include button(#eb1f0b);
-// }
-//
-//
-// #bottom-nav-menu {
-//   list-style-type: none;
-//   @include span-columns(4);
-//   @include shift(4);
-// }
-//
-// #bottom-nav-menu li {
-//   display: inline;
-// }
-//
-// #nav-menu {
-//   list-style-type: none;
-// }
-//
-// #nav-menu li {
-//   display: inline;
-// }
-//
-// .home-page-image {
-//   width: 200px;
-//   display: inline;
-// }

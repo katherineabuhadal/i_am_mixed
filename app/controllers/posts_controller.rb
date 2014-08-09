@@ -15,6 +15,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:body).merge(topic_id: 24)
+    params.require(:post).permit(:body).merge(topic_id: @topic.id)
   end
 end

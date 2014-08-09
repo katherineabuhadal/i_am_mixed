@@ -50,6 +50,8 @@ GEM
     coffee-script-source (1.7.1)
     erubis (2.7.0)
     execjs (2.2.1)
+    gretel (3.0.7)
+      rails (>= 3.2.0)
     hike (1.2.3)
     i18n (0.6.11)
     innertube (1.1.0)
@@ -62,6 +64,9 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.1)
+    kaminari (0.16.1)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -159,8 +164,10 @@ DEPENDENCIES
   bitters
   bourbon
   coffee-rails (~> 4.0.0)
+  gretel
   jbuilder (~> 2.0)
   jquery-rails
+  kaminari
   monban
   monban-generators
   mysql2 (~> 0.3.13)

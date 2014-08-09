@@ -1,17 +1,19 @@
 table tr th {
-  background:#222;
+  background:$dark-gray;
   color:#fff;
-  padding:0;
-  border:#111 solid 1px;
+
+  padding: 1em;
 }
 
 table tr td {
-  border:1px #ccc solid;
-  padding:5px;
+  $tab-border-color: $base-border-color;
+  $tab-border: 1px solid $tab-border-color;
+  $tab-border-radius: $base-border-radius;
+  padding: 1em;
 }
 
 table tr td.right {
-  background: #eee;
+  background: $light-gray;
 }
 
 table tr td h4 {
@@ -22,6 +24,12 @@ table tr td h4 {
 
 .user-info {
   @include span-columns(3);
+  background: lighten($light-gray, 10);
+  padding: 1em;
+}
+
+.user-info h4 {
+  @include shift(1.5);
 }
 
 .post-body {
@@ -30,16 +38,37 @@ table tr td h4 {
 
 .post {
   @include span-columns(11);
-  padding-bottom: 5px;
 
   $tab-border-color: $base-border-color;
   $tab-border: 1px solid $tab-border-color;
   $tab-border-radius: $base-border-radius;
-  padding: 1em;
 
   @include clearfix;
   border-radius: $tab-border-radius;
   border: $tab-border;
   margin-bottom: $base-line-height;
   overflow: hidden;
+}
+
+.buttons {
+  @include span-columns(1);
+  float: right;
+}
+
+.forum-avatar {
+  max-width: 90%;
+  padding: 9%;
+  border-radius: 100%;
+  background: $light-gray;
+  @include shift(.5);
+}
+
+.reply-button {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.round-button {
+  background-color: #FF7E21 !important;
+  border-radius: 100px !important;
 }

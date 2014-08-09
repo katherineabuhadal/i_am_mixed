@@ -1,0 +1,9 @@
+<% breadcrumbs do |links| %>
+  <% if links.any? %>
+    <div class="breadcrumb">
+      <% links.each do |link| %>
+        <%= link_to link.text, link.url, class: (link.current? ? "current" : nil) %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
