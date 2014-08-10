@@ -11,7 +11,9 @@ class Story < ActiveRecord::Base
   validates :title, presence: true
   validates :user, presence: true
 
+  paginates_per 6
+
   def self.recent
-    order(created_at: :desc).limit(9)
+    order(created_at: :desc)
   end
 end

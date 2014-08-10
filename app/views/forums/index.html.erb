@@ -1,21 +1,26 @@
 <h2>Forums</h2>
+
 <% breadcrumb :forums %>
+
+<%= button_to "NEW FORUM", [:new, :forum], method: :get, class: "round-button" %>
+
 <table>
   <tr>
     <th class="header-forum">Forum</th>
     <th width="header-last">Last Post</th>
+    <th>Edit post</th>
   </tr>
   <% @forums.each do |forum| %>
     <tr>
-      <td><h4><%= link_to h(forum.name), forum_path(forum.id) %></h4>
+      <td><h4><%= link_to forum.name, forum_path(forum.id) %></h4>
         <small><%= forum.topics.count %> topics</small><br/>
-        <%=h forum.description %></td>
+        <%= forum.description %></td>
       <td class="right"></td>
       <td><%= link_to "Show", forum %></td>
-      <td><%= link_to "Edit", edit_forum_path(forum) %></td>
-      <td><%= link_to "Destroy", forum, :confirm => 'Are you sure?', :method => :delete %></td>
+      <td><%= link_to "Edit", [:edit, forum] %></td>
+      <td><%= link_to "Destroy", forum, method: :delete %></td>
     </tr>
   <% end %>
 </table>
 
-<p><%= link_to "New Forum", new_forum_path %></p>
+<%= paginate @forums %>

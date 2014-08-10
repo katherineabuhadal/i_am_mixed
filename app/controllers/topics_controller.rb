@@ -1,10 +1,11 @@
 class TopicsController < ApplicationController
-  def new 
+  def new
     @forum = Forum.find(params[:forum_id])
     @topic = Topic.new
-  end 
+    @topic.posts.new
+  end
 
-  def create 
+  def create
     @forum = Forum.find(params[:forum_id])
     @topic = current_user.topics.create(topic_params)
 
@@ -14,13 +15,15 @@ class TopicsController < ApplicationController
   def show
     @forum = Forum.find(params[:forum_id])
     @topic = Topic.find(params[:id])
+    @topics = @topic.posts.page(params[:page])
   end
 
   private
 
   def topic_params
-    params.require(:topic).permit(:name,
-      post_attributes: [:id, :body]
-    ).merge(forum_id: @forum.id)
+    params.require(:topic).permit(
+      :name,
+      posts_attributes: [:id, :topic_id, :body]
+    ).deep_merge(forum_id: @forum.id, posts_attributes: { "0" => { user_id: current_user.id }})
   end
 end

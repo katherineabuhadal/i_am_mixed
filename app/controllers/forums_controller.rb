@@ -1,6 +1,6 @@
 class ForumsController < ApplicationController
   def index
-    @forums = Forum.all
+    @forums = Forum.all.page params[:page]
   end
 
   def new
@@ -14,6 +14,7 @@ class ForumsController < ApplicationController
 
   def show
     @forum = Forum.find(params[:id])
+    @topics = @forum.topics.page(params[:page])
   end
 
   private

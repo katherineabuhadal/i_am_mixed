@@ -2,7 +2,7 @@
   <%= form.label :name, "Topic" %>
   <%= form.text_field :name %>
 
-  <%= form.fields_for :post do |posts_form| %>
+  <%= form.fields_for :posts do |posts_form| %>
     <%= posts_form.label :body %>
     <%= posts_form.text_area :body %>
   <% end %>

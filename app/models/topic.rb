@@ -4,11 +4,13 @@ class Topic < ActiveRecord::Base
 
   accepts_nested_attributes_for :posts
 
+  paginates_per 10
+
   def replies
-    replies = posts.count
-    if replies > 0
-      replies -1
-    end
-    replies
+    [posts.count - 1, 0].max
+  end
+
+  def self.recent
+    order(created_at: :desc)
   end
 end

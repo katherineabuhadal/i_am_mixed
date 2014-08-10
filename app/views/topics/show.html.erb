@@ -1,33 +1,34 @@
 <% breadcrumb @topic %>
 
 <div class="reply-button">
-<%= button_to "POST REPLY", [:new, @forum, @topic, :post], method: :get, class: "round-button" %>
+  <%= button_to "POST REPLY", [:new, @forum, @topic, :post], method: :get, class: "round-button" %>
 </div>
 
-<% @topic.posts.each do |post| %>
+<% @topics.recent.each do |post| %>
   <div class="post">
-  <div class="user-info">
-    <div class="username">
-      <h4><%= post.user.username %></h4>
+    <div class="user-info">
+      <div class="username">
+        <h4><%= post.user.username %></h4>
+      </div>
+      <%= image_tag post.user.profile.avatar(:small), class: "forum-avatar" %>
     </div>
-    <%= image_tag post.user.profile.avatar(:small), class: "forum-avatar" %>
-  </div>
-  <div class="post-body">
-    <p>Posted on: <%= time_tag post.created_at %></p>
-    <p><%= post.body %></p>
+    <div class="post-body">
+      <div>
+        <p>Posted on: <%= time_tag post.created_at %></p>
+        <p><%= post.body %></p>
+      </div>
       <div class="buttons">
         <%= button_to "Edit", [:edit, @forum, @topic], method: :get %>
         <%= button_to "Delete", [@forum, @topic], confirm: 'Are you sure?', method: :delete %>
       </div>
+    </div>
   </div>
-</div>
 <% end %>
 
 <div class="reply-button">
   <%= button_to "POST REPLY", [:new, @forum, @topic, :post], method: :get, class: "round-button" %>
 </div>
 
-<%= link_to "Destroy Topic", [@forum, @topic], method: :delete %> |
-<%= link_to "View All", [@forum, :topics] %>
+<%= link_to "Destroy Topic", [@forum, @topic], method: :delete %>
 
-<%= render 'pagination' %>
+<%= paginate @topics %>
