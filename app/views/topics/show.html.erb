@@ -18,8 +18,12 @@
         <p><%= post.body %></p>
       </div>
       <div class="buttons">
-        <%= button_to "Edit", [:edit, @forum, @topic], method: :get %>
-        <%= button_to "Delete", [@forum, @topic], confirm: 'Are you sure?', method: :delete %>
+        <% if current_user.created?(post) %>
+          <%= button_to "Edit", [:edit, @forum, @topic, post], method: :get %>
+        <% end %>
+        <% if current_user.has_permission?(post) %>
+          <%= button_to "Delete", [@forum, @topic], method: :delete %>
+        <% end %>
       </div>
     </div>
   </div>

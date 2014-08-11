@@ -1,6 +1,6 @@
 <h2>Edit Your profile</h2>
 
-<%= form_for @profile, url: profile_path, html: { multipart: true } do |form| %>
+<%= form_for @profile, url: edit_user_profile_path, html: { multipart: true } do |form| %>
   <%= form.label :description, "Describe yourself" %>
   <%= form.text_field :description %>
 

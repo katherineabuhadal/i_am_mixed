@@ -21,8 +21,13 @@
   </div>
 
   <div>
-    <%= link_to "Edit Story", [:edit, @story] %>
-    <%= link_to "Delete Story", [@story], method: :delete %>
+    <% if current_user.created?(@story) %>
+      <%= link_to "Edit Story", [:edit, @story] %>
+    <% end %>
+
+    <% if current_user.has_permission?(@story) %>
+      <%= link_to "Delete Story", [@story], method: :delete %>
+    <% end %>
   </div>
 
   <h2>Responses:</h2>

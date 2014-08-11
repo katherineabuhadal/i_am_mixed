@@ -12,9 +12,9 @@ Rails.application.routes.draw do
     resources :responses, only: [:create]
   end
 
-  resources :forums, only: [:index, :new, :create, :show, :edit] do 
-    resources :topics, only: [:new, :index, :create, :show, :edit] do
-      resources :posts, only: [:new, :edit, :create]
+  resources :forums do
+    resources :topics, only: [:new, :create, :destroy, :index, :show] do
+      resources :posts, only: [:new, :edit, :create, :destroy, :edit, :update]
     end
   end
 

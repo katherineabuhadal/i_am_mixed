@@ -14,6 +14,14 @@ class User < ActiveRecord::Base
   validates :password_digest, presence: true
   validates :username, presence: true, uniqueness: true
 
+  def has_permission?(editable)
+    admin? || created?(editable)
+  end
+
+  def created?(editable)
+    id == editable.user_id
+  end
+
   def like(story)
     likes.create(story_id: story.id)
   end
