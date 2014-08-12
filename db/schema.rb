@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140811141652) do
+ActiveRecord::Schema.define(version: 20140812181715) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,11 +48,13 @@ ActiveRecord::Schema.define(version: 20140811141652) do
   add_index "messages", ["sender_id"], name: "index_messages_on_sender_id", using: :btree
 
   create_table "posts", force: true do |t|
-    t.text     "body",       null: false
-    t.integer  "user_id",    null: false
-    t.integer  "topic_id",   null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.text     "body",                         null: false
+    t.integer  "user_id",                      null: false
+    t.integer  "topic_id",                     null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.integer  "spam_counter", default: 0,     null: false
+    t.boolean  "spam",         default: false, null: false
   end
 
   add_index "posts", ["topic_id"], name: "index_posts_on_topic_id", using: :btree
@@ -84,12 +86,14 @@ ActiveRecord::Schema.define(version: 20140811141652) do
   add_index "responses", ["user_id"], name: "index_responses_on_user_id", using: :btree
 
   create_table "stories", force: true do |t|
-    t.string   "image",      default: "", null: false
-    t.integer  "user_id",                 null: false
-    t.string   "title",                   null: false
-    t.text     "body",                    null: false
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.string   "image",        default: "",    null: false
+    t.integer  "user_id",                      null: false
+    t.string   "title",                        null: false
+    t.text     "body",                         null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.boolean  "spam",         default: false, null: false
+    t.integer  "spam_counter", default: 0,     null: false
   end
 
   add_index "stories", ["user_id"], name: "index_stories_on_user_id", using: :btree
@@ -111,11 +115,13 @@ ActiveRecord::Schema.define(version: 20140811141652) do
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "topics", force: true do |t|
-    t.string   "name",       null: false
-    t.integer  "user_id",    null: false
-    t.integer  "forum_id",   null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",                         null: false
+    t.integer  "user_id",                      null: false
+    t.integer  "forum_id",                     null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.integer  "spam_counter", default: 0,     null: false
+    t.boolean  "spam",         default: false, null: false
   end
 
   add_index "topics", ["forum_id"], name: "index_topics_on_forum_id", using: :btree

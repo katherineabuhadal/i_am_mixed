@@ -1,5 +1,6 @@
 class Story < ActiveRecord::Base
   include TagListable
+  include Spammable
 
   belongs_to :user
   has_many :likes, dependent: :destroy
@@ -15,5 +16,9 @@ class Story < ActiveRecord::Base
 
   def self.recent
     order(created_at: :desc)
+  end
+
+  def self.spam
+    where(spam: true)
   end
 end

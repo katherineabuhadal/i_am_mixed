@@ -25,6 +25,7 @@
           <%= button_to "Delete", [@forum, @topic], method: :delete %>
         <% end %>
       </div>
+      <%= link_to "Flag as spam", [post, :post_spams], method: :post %>
     </div>
   </div>
 <% end %>

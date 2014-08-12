@@ -10,13 +10,21 @@ Rails.application.routes.draw do
   resources :stories do
     resource :like, only: [:create, :destroy]
     resources :responses, only: [:create]
+    resources :story_spams, only: [:create]
+  end
+
+  resources :posts, only: [] do
+    resources :post_spams, only: [:create]
   end
 
   resources :forums do
     resources :topics, only: [:new, :create, :destroy, :index, :show] do
-      resources :posts, only: [:new, :edit, :create, :destroy, :edit, :update]
+      resources :posts, only: [:new, :edit, :create, :destroy, :update, :show]
+      resources :topic_spams, only: [:create]
     end
   end
+
+  resource :admin_dashboard, only: [:show]
 
   get "/sign-up", to: "users#new", as: :sign_up
   get "/sign-out", to: "sessions#destroy", as: :sign_out

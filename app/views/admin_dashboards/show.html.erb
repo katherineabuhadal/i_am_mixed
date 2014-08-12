@@ -1,0 +1,16 @@
+<h2>Admin Dashboard</h2>
+
+<h4>Stories marked as spam</h4>
+<% @stories.each do |story| %>
+  <%= link_to story.title, story %>
+<% end %>
+
+<h4>Posts marked as spam</h4>
+<% @posts.each do |post| %>
+  <%= link_to post.body, forum_topic_post_path(post.topic.forum, post.topic, post)  %>
+<% end %>
+
+<h4>Topics marked as spam</h4>
+<% @topics.each do |topic| %>
+  <%= link_to topic.name, forum_topic_path(topic.forum, topic) %>
+<% end %>

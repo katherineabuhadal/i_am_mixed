@@ -21,12 +21,16 @@
   </div>
 
   <div>
-    <% if current_user.created?(@story) %>
-      <%= link_to "Edit Story", [:edit, @story] %>
-    <% end %>
+    <% if signed_in? %>
+      <%= button_to "Mark as Spam", [@story, :story_spams] %>
 
-    <% if current_user.has_permission?(@story) %>
-      <%= link_to "Delete Story", [@story], method: :delete %>
+      <% if current_user.created?(@story) %>
+        <%= link_to "Edit Story", [:edit, @story] %>
+      <% end %>
+
+      <% if current_user.has_permission?(@story) %>
+        <%= link_to "Delete Story", [@story], method: :delete %>
+      <% end %>
     <% end %>
   </div>
 

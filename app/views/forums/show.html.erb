@@ -20,6 +20,7 @@
         <td><%= topic.replies %></td>
         <td>Views</td>
         <td>Last post</td>
+        <td><button><%= link_to "Flag", [@forum, topic, :topic_spams], method: :post %></button></td>
         <% if current_user.has_permission?(topic) %>
           <td><button><%= link_to "Destroy", [@forum, topic], method: :delete %></button></td>
         <% end %> 

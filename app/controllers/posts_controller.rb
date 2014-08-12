@@ -7,6 +7,11 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
+  def show
+    @topic = find_topic
+    @post = find_post
+  end
+
   def create
     @forum = find_forum
     @topic = find_topic
