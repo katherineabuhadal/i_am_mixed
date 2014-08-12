@@ -4,6 +4,6 @@
   <%= render @stories.recent %>
 </div>
 
-<%= link_to "Add a new Story", [:new, :story] %>
+<%= button_to "ADD YOUR STORY", [:new, :story], method: :get, class: "round-button" %>
 
 <%= paginate @stories %>

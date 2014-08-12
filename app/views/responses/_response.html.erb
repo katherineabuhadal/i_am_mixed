@@ -1,0 +1,10 @@
+<div class="comment">
+  <div class="comment-image">
+    <%= image_tag response.user.profile.avatar(:medium) %>
+  </div>
+  <div class="comment-content">
+    <h1><%= response.user.username %></h1>
+    <p><%= response.body %><p>
+    <p class="comment-detail">Posted on <%= time_tag response.created_at %></p>
+  </div>
+</div>

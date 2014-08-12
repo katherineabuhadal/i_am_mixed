@@ -6,7 +6,7 @@
     <%= story.title %>
   </div>
   <div class="card-copy">
-    <p><%= story.body %></p>
+    <p><%= truncate(story.body, length: 200, separator: ' ') { link_to " Continue Reading", story } %></p>
   </div>
   <div class="card-stats">
     <ul>

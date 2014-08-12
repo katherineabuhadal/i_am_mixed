@@ -1,51 +1,44 @@
 <div>
-  <div>
-    <%= @story.title %>
-  </div>
-  <div>
-    <%= @story.body %>
-  </div>
-  <div>
-    <%= image_tag @story.image %>
-  </div>
-  <div>
-    Created by: <%= @story.user.username %>
-  </div>
 
-  <h2>Tags:</h2>
-
+<div class="side-image">
+  <div class="images-wrapper"></div>
+    <div class="story-image">
+      <%= image_tag @story.image %>
+    </div>
+  <div class="content">
+    <h4><%= @story.user.username %></h4>
+    <h1><%= @story.title %></h1>
+    <p><%= @story.body %></p>
   <div>
     <% @story.tags.each do |tag| %>
-      <%= link_to tag.name, tag %>
+      <%= link_to tag.name, tag, class: "tag" %>
     <% end %>
   </div>
+    <div class="story-link">
+      <% if signed_in? %>
+        <%= link_to "Flag Story | ", [@story, :story_spams], method: :post %>
 
-  <div>
-    <% if signed_in? %>
-      <%= button_to "Mark as Spam", [@story, :story_spams] %>
+        <% if current_user.created?(@story) %>
+          <%= link_to "Edit Story | ", [:edit, @story] %>
+        <% end %>
 
-      <% if current_user.created?(@story) %>
-        <%= link_to "Edit Story", [:edit, @story] %>
+        <% if current_user.has_permission?(@story) %>
+          <%= link_to "Delete Story", [@story], method: :delete %>
+        <% end %>
       <% end %>
+    </div>
+  </div>
+</div>
 
-      <% if current_user.has_permission?(@story) %>
-        <%= link_to "Delete Story", [@story], method: :delete %>
+  <h4><%= @story.responses.count %> Responses</h4>
+  <div class="comments-container">
+    <div class="response-box">
+      <%= form_for [@story, @response] do |form| %>
+        <%= form.text_area :body, class: "comment-input" %>
+        <%= form.submit "RESPOND", class: "round-button" %>
       <% end %>
-    <% end %>
+    </div>
+    <%= render @responses %>
   </div>
 
-  <h2>Responses:</h2>
-
-  <% @responses.each do |response| %>
-    <div>
-      <%= response.body %>
-    </div>
-    <div>
-      <p>By: <%= response.user.username %></p>
-      <%= image_tag response.user.profile.avatar(:medium), class: "profile-photo" %>
-    </div>
-    <div>
-      <p>Date posted: <%= time_tag response.created_at %></p>
-    </div>
-  <% end %>
 </div>
