@@ -15,7 +15,7 @@
     <%= form.file_field :avatar %>
 
     <%= form.label :image_delete, "Remove Image" %>
-    <%= check_box_tag(:image_delete, checked_value = "1", checked = false, options = {})  %>
+    <%= check_box_tag(:image_delete)  %>
   <% else %>
     <%= form.label :avatar, "Upload a profile picture" %>
     <%= form.file_field :avatar %>

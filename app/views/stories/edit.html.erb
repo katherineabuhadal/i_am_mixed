@@ -1,4 +1,4 @@
-<%= form_for @story do |form| %>
+<%= form_for @story, html: { multipart: true }  do |form| %>
   <div>
     <%= form.text_field :title, placeholder: "Title" %>
   </div>
@@ -9,7 +9,19 @@
     <%= form.text_area :tag_list, placeholder: "Enter tags here" %>
   </div>
   <div>
-    <%= form.text_field :image, placeholder: "Image URL" %>
-  </div>
+  <% if @story.image? %>
+    <p>You currently have this image:<p>
+    <%= image_tag @story.image %>
+
+    <%= form.label :image, "Choose a new image:" %>
+    <%= form.file_field :image %>
+
+    <%= form.label :image_delete, "Remove Image" %>
+    <%= check_box_tag(:image_delete)  %>
+  <% else %>
+    <%= form.label :image, "Upload an image with your story" %>
+    <%= form.file_field :image %>
+  <% end %>
     <%= form.submit "Update Story" %>
 <% end %>
+</div>

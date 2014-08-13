@@ -12,6 +12,9 @@ class Story < ActiveRecord::Base
   validates :title, presence: true
   validates :user, presence: true
 
+  has_attached_file :image, styles: { medium: "345x230>", small:"150x150", thumb: "100x100>" }, default_url: "missing_:style.png"
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
+
   paginates_per 6
 
   def self.recent

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140812181715) do
+ActiveRecord::Schema.define(version: 20140813200907) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,14 +86,17 @@ ActiveRecord::Schema.define(version: 20140812181715) do
   add_index "responses", ["user_id"], name: "index_responses_on_user_id", using: :btree
 
   create_table "stories", force: true do |t|
-    t.string   "image",        default: "",    null: false
-    t.integer  "user_id",                      null: false
-    t.string   "title",                        null: false
-    t.text     "body",                         null: false
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-    t.boolean  "spam",         default: false, null: false
-    t.integer  "spam_counter", default: 0,     null: false
+    t.integer  "user_id",                            null: false
+    t.string   "title",                              null: false
+    t.text     "body",                               null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.boolean  "spam",               default: false, null: false
+    t.integer  "spam_counter",       default: 0,     null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "stories", ["user_id"], name: "index_stories_on_user_id", using: :btree
