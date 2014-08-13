@@ -1,14 +1,25 @@
 <h2>Edit Your profile</h2>
 
-<%= form_for @profile, url: edit_user_profile_path, html: { multipart: true } do |form| %>
+<%= form_for [current_user, @profile], html: { multipart: true } do |form| %>
   <%= form.label :description, "Describe yourself" %>
   <%= form.text_field :description %>
 
   <%= form.label :birthday, "Enter your birthday" %>
   <%= form.date_select :birthday, start_year: 1900 %>
 
-  <%= form.label :avatar, "Upload a profile picture" %>
-  <%= form.file_field :avatar %>
+  <% if @profile.avatar? %>
+    <p>Your current profile picture:<p>
+    <%= image_tag @profile.avatar %>
+
+    <%= form.label :avatar, "Change your profile picture" %>
+    <%= form.file_field :avatar %>
+
+    <%= form.label :image_delete, "Remove Image" %>
+    <%= check_box_tag(:image_delete, checked_value = "1", checked = false, options = {})  %>
+  <% else %>
+    <%= form.label :avatar, "Upload a profile picture" %>
+    <%= form.file_field :avatar %>
+  <% end %>
 
   <%= form.label :tag_list, "Add tags" %>
   <%= form.text_field :tag_list %>

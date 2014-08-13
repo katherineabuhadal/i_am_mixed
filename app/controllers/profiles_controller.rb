@@ -11,8 +11,14 @@ class ProfilesController < ApplicationController
 
   def update
     profile = current_user.profile
+
+    if params[:image_delete]
+      profile.avatar.clear
+    end
+
     profile.update(profile_params)
-    redirect_to profile
+
+    redirect_to [current_user, profile]
   end
 
   private
@@ -23,6 +29,7 @@ class ProfilesController < ApplicationController
       :avatar,
       :birthday,
       :tag_list,
+      :image_delete,
     )
   end
 end
