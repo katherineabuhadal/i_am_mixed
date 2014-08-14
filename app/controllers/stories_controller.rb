@@ -17,6 +17,7 @@ class StoriesController < ApplicationController
     @story = Story.find(params[:id])
     @response = Response.new
     @responses = @story.responses
+    @child = Response.new
   end
 
   def edit

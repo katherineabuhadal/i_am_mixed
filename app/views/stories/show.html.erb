@@ -38,7 +38,7 @@
         <%= form.submit "RESPOND", class: "round-button" %>
       <% end %>
     </div>
-    <%= render @responses %>
+    <%= render partial: "responses/response", collection: @responses, locals: { child: @child } %>
   </div>
 
 </div>

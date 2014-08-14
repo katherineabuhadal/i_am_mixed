@@ -20,3 +20,4 @@ gem 'kaminari'
 gem 'gretel'
 gem 'gibbon', '~> 1.1.3'
 gem 'letter_opener', group: :development
+gem 'pry-rails', group: :development
