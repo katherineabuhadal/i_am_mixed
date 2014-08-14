@@ -31,6 +31,7 @@
 </div>
 
   <h4><%= @story.responses.count %> Responses</h4>
+
   <div class="comments-container">
     <div class="response-box">
       <%= form_for [@story, @response] do |form| %>
@@ -38,7 +39,7 @@
         <%= form.submit "RESPOND", class: "round-button" %>
       <% end %>
     </div>
-    <%= render @responses %>
+    <%= render partial: "responses/response", collection: @responses, locals: { child: @child } %>
   </div>
 
 </div>

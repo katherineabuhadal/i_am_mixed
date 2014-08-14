@@ -6,5 +6,23 @@
     <h1><%= response.user.username %></h1>
     <p><%= response.body %><p>
     <p class="comment-detail">Posted on <%= time_tag response.created_at %></p>
+
+    <% if signed_in? %>
+      <% if current_user.has_permission?(response) %>
+        <p><%= link_to "Delete Response", response, method: :delete %>
+      <% end %>
+    <% end %>
+
+    <% if ! response.child? %>
+      <%= form_for [response, @child] do |form| %>
+        <%= form.label :body, "Reply" %>
+        <%= form.text_area :body %>
+        <%= form.submit "RESPOND", class: "round-button" %>
+      <% end %>
+    <% end %>
+
+    <div class="replies">
+      <%= render response.children %>
+    </div>
   </div>
 </div>
