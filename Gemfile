@@ -12,9 +12,11 @@ gem 'monban-generators'
 gem 'bourbon'
 gem 'neat'
 gem 'bitters'
-gem "paperclip", "~> 4.1"
+gem 'paperclip', '~> 4.1'
 gem 'mysql2', '~> 0.3.13'
 gem 'thinking-sphinx', '~> 3.1.1'
 gem 'rails_12factor', group: :production
 gem 'kaminari'
 gem 'gretel'
+gem 'gibbon', '~> 1.1.3'
+gem 'letter_opener', group: :development

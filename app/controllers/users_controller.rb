@@ -11,6 +11,7 @@ class UsersController < ApplicationController
 
     if @user.valid?
       @user.create_profile
+      UserMailer.welcome_email(@user).deliver
       sign_in(@user)
       redirect_to root_path
     else
