@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :story_spams, only: [:create]
   end
 
-  resources :responses, only: [] do
+  resources :responses, only: [:destroy] do
     resources :responses, only: [:create]
   end
 
