@@ -7,7 +7,8 @@ class ResponsesController < ApplicationController
   end
 
   def destroy
-    @response = Response.find(params[:id])
+    response = Response.find(params[:id])
+    response.destroy 
     redirect_to :stories
   end
 

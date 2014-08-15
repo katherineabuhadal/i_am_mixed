@@ -7,4 +7,8 @@ class Response < ActiveRecord::Base
   validates :body, presence: true
   validates :user, presence: true
   validates :story, presence: true
+
+  def child?
+    self.parent_id != nil
+  end
 end
