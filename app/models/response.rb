@@ -9,6 +9,6 @@ class Response < ActiveRecord::Base
   validates :story, presence: true
 
   def child?
-    self.parent_id != nil
+    parent_id != nil
   end
 end
