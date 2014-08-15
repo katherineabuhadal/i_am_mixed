@@ -1,6 +1,7 @@
 class ResponsesController < ApplicationController
   def create
     @story = find_story || find_parent.story
+    @child = Response.new
     current_user.responses.create(response_params)
     redirect_to @story
   end
