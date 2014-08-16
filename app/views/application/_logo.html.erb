@@ -1,9 +1,6 @@
 <div class="logo">
-  <h1><%= link_to "logo", root_path %></h1>
+  <%= link_to image_tag("/assets/i-am-mixed-logo.png"), root_path %>
   <% if signed_in? %>
-    <% if current_user.admin? %>
-      <%= link_to "Admin Dashboard", :admin_dashboard %>
-    <% end %>
     Hello, <%= current_user.email %>
     <%= link_to "Sign out", :session, method: :delete %>
   <% end %>

@@ -1,4 +1,4 @@
-<div class="card">
+<%= div_for story, class: "card" do %>
   <div class="card-image">
     <%= image_tag story.image %>
   </div>
@@ -6,27 +6,35 @@
     <%= story.title %>
   </div>
   <div class="card-copy">
-    <p><%= truncate(story.body, length: 200, separator: ' ') { link_to " Continue Reading", story } %></p>
+    <p><%= truncate(story.body, length: 200, separator: ' ') { link_to " READ MORE >>", story } %></p>
   </div>
   <div class="card-stats">
     <ul>
-      <li><%= story.likes.count %><span>Likes</span></li>
-      <li>298<span>Shares</span></li>
+      <li><%= story.likes.count %><span>Hearts</span></li>
+      <li><%= time_ago_in_words(story.created_at) %><span>ago</span></li>
       <li><%= story.responses.count %><span>Responses</span></li>
     </ul>
   </div>
   <div class="card-footer">
     <ul>
       <% if signed_in? && current_user.likes?(story) %>
-        <li><%= link_to "UnHeart it", [story, :like], method: :delete %></li>
+        <li>
+        <%= link_to([story, :like], method: :delete) do %>
+          <span><div class="heart-clicked"></div></span>
+        <% end %>
+        </li>
       <% else %>
-        <li><%= link_to "Heart it", [story, :like], method: :post %></li>
+        <li>
+        <%= link_to([story, :like], method: :post) do %>
+          <span><div class="heart"></div></span>
+        <% end %>
+        </li>
+      <% end %>
+
+      <%= form_for [story, @response] do |form| %>
+        <%= form.text_area :body, placeholder: "Add a response" %>
+        <%= form.submit "Respond" %>
       <% end %>
     </ul>
-    <%= form_for [story, @response] do |form| %>
-      <%= form.text_area :body %>
-      <%= form.submit "Respond" %>
-    <% end %>
-    <%= link_to "Click for more", story %>
   </div>
-</div>
+<% end %>

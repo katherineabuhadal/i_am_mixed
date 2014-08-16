@@ -2,7 +2,6 @@
 
 <% breadcrumb :forums %>
 
-
 <% if signed_in? %>
   <% if current_user.admin? %>
     <%= button_to "NEW FORUM", [:new, :forum], method: :get, class: "round-button" %>
@@ -15,9 +14,11 @@
     <th width="header-last">Last Post</th>
     <th>Posts</th>
     <th>Views</th>
-    <% if current_user.admin? %>
-      <th>Edit forum</th>
-      <th>Delete forum</th>
+    <% if signed_in? %>
+      <% if current_user.admin? %>
+        <th>Edit forum</th>
+        <th>Delete forum</th>
+      <% end %>
     <% end %>
   </tr>
   <% @forums.each do |forum| %>
@@ -28,9 +29,11 @@
       <td>Latest Post</td>
       <td>Posts</td>
       <td>Views</td>
-      <% if current_user.admin? %>
-        <td><%= link_to "Edit", [:edit, forum] %></td>
-        <td><%= link_to "Destroy", forum, method: :delete %></td>
+      <% if signed_in? %>
+        <% if current_user.admin? %>
+          <td><%= link_to "Edit", [:edit, forum] %></td>
+          <td><%= link_to "Destroy", forum, method: :delete %></td>
+        <% end %>
       <% end %>
     </tr>
   <% end %>

@@ -4,6 +4,19 @@
   <%= render @stories.recent %>
 </div>
 
+<script>
+  $(document).ready(function(){
+      $('textarea#response_body').click(function() {
+        event.stopPropagation();
+        $(this).next().show()
+      });
+
+      $('body').click(function(event){
+        $('#new_response input[type=submit]').hide();
+      });
+   });
+</script>
+
 <%= button_to "ADD YOUR STORY", [:new, :story], method: :get, class: "round-button" %>
 
 <%= paginate @stories %>

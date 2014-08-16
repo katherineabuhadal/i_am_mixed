@@ -26,6 +26,11 @@
     @include omega(3n);
   }
 
+  input {
+    display: none;
+    float: left;
+  }
+
   .card-image {
     overflow: hidden;
     max-height: 250px;
@@ -82,6 +87,7 @@
   .card-stats {
     padding: $base-line-height/2 $gutter/2;
     overflow: auto;
+    border-bottom: $card-border;
 
     ul li {
       display: inline;
@@ -106,6 +112,26 @@
         font-size: .7em;
         display: block;
         font-weight: normal;
+      }
+    }
+  }
+
+  .card-footer {
+    padding: $base-line-height/2 $gutter/2;
+    overflow: auto;
+
+    ul li {
+      display: inline;
+      float: right;
+      padding: 0 .7em 0 .7em;
+
+      &:first-child {
+        padding-left: 0;
+        padding-top: .5em;
+      }
+
+      span {
+        display: block;
       }
     }
   }

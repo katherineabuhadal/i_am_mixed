@@ -85,3 +85,12 @@ cite {
     content: '\2014 \00A0';
   }
 }
+
+::selection {
+  background: $blue;
+  color: white;
+}
+::-moz-selection {
+  background: $blue;
+  color: white;
+}

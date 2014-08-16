@@ -1,14 +1,14 @@
 <header class="navigation">
   <div class="navigation-wrapper">
-    <a href="javascript:void(0)" class="logo">
-      <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png" alt="">
-    </a>
     <a href="" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
     <div class="nav">
       <ul id="navigation-menu">
         <li class="nav-link"><a href="/search">Search</a></li>
         <% if signed_in? %>
           <li class="nav-link"><%= link_to "My Profile", [current_user, :profile] %></li>
+          <% if current_user.admin? %>
+            <li class="nav-link"><%= link_to "Admin", :admin_dashboard %></li>
+          <% end %>
         <% end %>
         <li class="nav-link"><a href="/about">About</a></li>
         <li class="nav-link"><a href="/contact">Contact</a></li>
@@ -24,7 +24,7 @@
           </button>
         </div>
       </div>
-      <%= link_to "Sign up", "/sign-up", class: "sign-up" %> 
+      <%= link_to "New Story", [:new, :story], class: "sign-up" %>
     </div>
   </div>
 </header>

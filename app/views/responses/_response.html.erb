@@ -6,10 +6,10 @@
     <h1><%= response.user.username %></h1>
     <p><%= response.body %><p>
     <p class="comment-detail">Posted on <%= time_tag response.created_at %></p>
-
+    <%= link_to "Reply", "#" %>
     <% if signed_in? %>
       <% if current_user.has_permission?(response) %>
-        <p><%= link_to "Delete Response", response, method: :delete %>
+        <%= link_to "Delete Response", response, method: :delete %>
       <% end %>
     <% end %>
 

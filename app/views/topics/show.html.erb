@@ -18,14 +18,16 @@
         <p><%= post.body %></p>
       </div>
       <div class="buttons">
-        <% if current_user.created?(post) %>
-          <%= button_to "Edit", [:edit, @forum, @topic, post], method: :get %>
-        <% end %>
-        <% if current_user.has_permission?(post) %>
-          <%= button_to "Delete", [@forum, @topic], method: :delete %>
+        <% if signed_in? %>
+            <%= link_to "Flag Post |", [post, :post_spams], method: :post %>
+          <% if current_user.created?(post) %>
+              <%= link_to "Edit |", [:edit, @forum, @topic, post] %>
+            <% end %>
+          <% if current_user.has_permission?(post) %>
+            <%= link_to "Delete", [@forum, @topic], method: :delete %>
+          <% end %>
         <% end %>
       </div>
-      <%= link_to "Flag as spam", [post, :post_spams], method: :post %>
     </div>
   </div>
 <% end %>
@@ -34,6 +36,8 @@
   <%= button_to "POST REPLY", [:new, @forum, @topic, :post], method: :get, class: "round-button" %>
 </div>
 
-<%= link_to "Destroy Topic", [@forum, @topic], method: :delete %>
+<% if signed_in? %>
+  <%= link_to "Destroy Topic", [@forum, @topic], method: :delete %>
+<% end %>
 
 <%= paginate @topics %>
