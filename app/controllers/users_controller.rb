@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def create
     @user = sign_up(user_params)
 
-    if @user.valid?
+    if (@user.valid? && password_confirmation)
       @user.create_profile
       UserMailer.welcome_email(@user).deliver
       sign_in(@user)
@@ -22,6 +22,10 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :username, :password)
+    params.require(:user).permit(:email, :username, :password, :password_confirmation)
+  end
+
+  def password_confirmation
+    params[:user][:password] == params[:user][:password_confirmation]
   end
 end
