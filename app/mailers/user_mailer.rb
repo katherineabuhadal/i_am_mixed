@@ -1,9 +1,9 @@
 class UserMailer < ActionMailer::Base
   default from: "from@example.com"
 
-  def welcome_email(user)
+  def confirmation_email(user)
     @user = user
-    @url = polymorphic_url(:sign_in)
+    @token = @user.token
     mail(to: @user.email, subject: "Welcome to iammixed.com")
   end
 end

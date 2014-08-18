@@ -1,0 +1,9 @@
+Welcome to iammixed.com, <%= @user.username %>
+
+You're almost done!
+
+To confirm your email, just follow this link:
+
+<%= new_email_confirmation_url(:email_confirmation, user: { token: @token }) %>
+
+Thanks for joining and have a great day!

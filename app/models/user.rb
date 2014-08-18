@@ -10,9 +10,18 @@ class User < ActiveRecord::Base
 
   has_one :profile, dependent: :destroy
 
-  validates :email, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true,
+    email_format: { message: "Please choose a valid email address" }
   validates :password_digest, presence: true
-  validates :username, presence: true, uniqueness: true
+  validates :password_confirmation, length: { in: 5..20 }
+  validates :username, presence: true, uniqueness: true, length: { in: 5..20 }
+
+  attr_accessor :password_confirmation
+
+  def generate_token
+    token = SecureRandom.hex(32)
+    update_attributes(token: token)
+  end
 
   def has_permission?(editable)
     admin? || created?(editable)

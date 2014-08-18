@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     resources :messages, only: [:index, :create, :show]
   end
 
+  resource :email_confirmation, only: [:new, :create]
+
   resources :tags, only: [:show]
   resource :search, only: [:show]
   resources :stories do

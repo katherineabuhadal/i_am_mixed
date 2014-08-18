@@ -1,0 +1,2 @@
+<h4>Please confirm your account by clicking the button below</h4>
+<%= button_to "Confirm", [:email_confirmation, user: { token: @token }] %>
