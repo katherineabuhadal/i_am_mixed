@@ -10,9 +10,10 @@ class User < ActiveRecord::Base
 
   has_one :profile, dependent: :destroy
 
-  validates :email, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true, email_format: { message: "Please choose a valid email address" }
   validates :password_digest, presence: true
-  validates :username, presence: true, uniqueness: true
+  validates :password_confirmation, length: { in: 5..20 }
+  validates :username, presence: true, uniqueness: true, length: { in: 5..20 }
   has_secure_password
 
   def has_permission?(editable)
