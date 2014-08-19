@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   validates :password_confirmation, length: { in: 5..20 }
   validates :username, presence: true, uniqueness: true, length: { in: 5..20 }
 
-  has_secure_password
+  attr_accessor :password_confirmation
 
   def generate_token
     token = SecureRandom.hex(128)
