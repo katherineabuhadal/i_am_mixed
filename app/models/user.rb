@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   attr_accessor :password_confirmation
 
   def generate_token
-    token = SecureRandom.hex(128)
+    token = SecureRandom.hex(32)
     update_attributes(token: token)
   end
 
