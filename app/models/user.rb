@@ -16,6 +16,11 @@ class User < ActiveRecord::Base
   validates :username, presence: true, uniqueness: true, length: { in: 5..20 }
   has_secure_password
 
+  def generate_token
+    token = SecureRandom.hex(128)
+    update_attributes(token: token)
+  end
+
   def has_permission?(editable)
     admin? || created?(editable)
   end

@@ -11,6 +11,7 @@ class UsersController < ApplicationController
 
     if (@user.valid? && password_confirmation)
       @user.create_profile
+      @user.generate_token
       UserMailer.welcome_email(@user).deliver
       sign_in(@user)
       redirect_to root_path
