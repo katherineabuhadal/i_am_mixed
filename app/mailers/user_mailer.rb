@@ -4,7 +4,7 @@ class UserMailer < ActionMailer::Base
   def welcome_email(user)
     @user = user
     @token = @user.token
-    @url = polymorphic_url([:new, :email_confirmation, @token])
+    @url = new_email_confirmation_url(@email_confirmation, user: {token: @token})
     mail(to: @user.email, subject: "Welcome to iammixed.com")
   end
 end

@@ -1,10 +1,12 @@
 class EmailConfirmationsController < ApplicationController
   def new
-    token = token.find(params[:token])
-    user = User.find_by(token: token)
+    @token = params[:user][:token]
   end
 
   def create
-    current_user.update_attributes(confirmed: true)
+    token = params[:user][:token]
+    user = User.find_by(token: token)
+    user.update_attribute(:confirmed, true)
+    redirect_to root_path
   end
 end

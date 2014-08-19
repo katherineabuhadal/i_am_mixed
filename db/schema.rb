@@ -139,6 +139,7 @@ ActiveRecord::Schema.define(version: 20140818202239) do
     t.string   "username",        default: "",    null: false
     t.boolean  "admin",           default: false, null: false
     t.text     "token",           default: "",    null: false
+    t.boolean  "confirmed",       default: false, null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
