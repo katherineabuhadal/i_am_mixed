@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resource :profile, only: [:show, :edit, :update]
     resources :messages, only: [:index, :create, :show]
   end
+
   resource :email_confirmation, only: [:new, :create]
 
   resources :tags, only: [:show]
