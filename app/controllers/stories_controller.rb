@@ -9,8 +9,12 @@ class StoriesController < ApplicationController
   end
 
   def create
-    @story = current_user.stories.create(story_params)
-    redirect_to @story
+    @story = current_user.stories.new(story_params)
+    if @story.save
+      redirect_to @story
+    else
+      render :new
+    end
   end
 
   def show
@@ -26,8 +30,11 @@ class StoriesController < ApplicationController
 
   def update
     @story = current_user.stories.find(params[:id])
-    @story.update(story_params)
-    redirect_to @story
+    if @story.update(story_params)
+      redirect_to @story
+    else
+      render :edit
+    end
   end
 
   def destroy

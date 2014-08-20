@@ -1,11 +1,16 @@
 <%= form_for [@forum, @topic] do |form| %>
-  <%= form.label :name, "Topic" %>
-  <%= form.text_field :name %>
+  <fieldset>
+    <h3>Create a New Topic</h3>
+    <%= render "error_messages", target: @topic %>
 
-  <%= form.fields_for :posts do |posts_form| %>
-    <%= posts_form.label :body %>
-    <%= posts_form.text_area :body %>
-  <% end %>
+    <%= form.label :name, "Topic" %>
+    <%= form.text_field :name %>
 
-  <%= form.submit "Submit" %>
+    <%= form.fields_for :posts do |posts_form| %>
+      <%= posts_form.label :body %>
+      <%= posts_form.text_area :body %>
+    <% end %>
+
+    <%= form.submit "Submit" %>
+  </fieldset>
 <% end %>

@@ -1,16 +1,20 @@
 <%= form_for @story, html: { multipart: true }  do |form| %>
-  <div>
-    <%= form.text_field :title, placeholder: "Title" %>
-  </div>
-  <div>
-    <%= form.text_area :body, placeholder: "Body" %>
-  </div>
-  <div>
-    <%= form.text_area :tag_list, placeholder: "Enter tags here" %>
-  </div>
-  <div>
-    <%= form.label :image, "Upload a picture with your story (optional):" %>
-    <%= form.file_field :image %>
-  </div>
-    <%= form.submit "Create Story" %>
+  <fieldset>
+    <h3>Create a New Story</h3>
+    <%= render "error_messages", target: @story %>
+    <div>
+      <%= form.text_field :title, placeholder: "Title" %>
+    </div>
+    <div>
+      <%= form.text_area :body, placeholder: "Body" %>
+    </div>
+    <div>
+      <%= form.text_area :tag_list, placeholder: "Enter tags here" %>
+    </div>
+    <div>
+      <%= form.label :image, "Upload a picture with your story (optional):" %>
+      <%= form.file_field :image %>
+    </div>
+      <%= form.submit "Create Story" %>
+  </fieldset>
 <% end %>

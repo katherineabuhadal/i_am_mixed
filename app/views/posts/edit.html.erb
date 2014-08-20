@@ -1,5 +1,9 @@
 <%= form_for [@forum, @topic, @post] do |form| %>
-  <%= form.label :body %>
-  <%= form.text_area :body %>
-  <%= form.submit "Edit" %>
+  <fieldset>
+    <h3>Reply to post</h3>
+    <%= render "error_messages", target: @post %>
+    <%= form.label :body %>
+    <%= form.text_area :body %>
+    <%= form.submit "Edit" %>
+  </fieldset>
 <% end %>

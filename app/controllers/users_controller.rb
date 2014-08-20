@@ -10,23 +10,24 @@ class UsersController < ApplicationController
     @user = sign_up(user_params)
 
     if @user.valid? && confirm_password?
-      @user.create_profile
-      @user.generate_token
-      UserMailer.confirmation_email(@user).deliver
-      sign_in(@user)
+      UserCreator.populate_info(@user)
+
+      @user = User.new
+      flash[:alert] = "Thank you for joining! Please check your email for a confirmation link"
       redirect_to root_path
     else
+      flash[:error] = "Passwords do not match"
       render :new
     end
   end
 
   private
 
-  def user_params
-    params.require(:user).permit(:email, :username, :password, :password_confirmation)
-  end
-
   def confirm_password?
     params[:user][:password] == params[:user][:password_confirmation]
+  end
+
+  def user_params
+    params.require(:user).permit(:email, :username, :password, :password_confirmation)
   end
 end

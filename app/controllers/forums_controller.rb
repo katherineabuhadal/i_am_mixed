@@ -10,8 +10,12 @@ class ForumsController < ApplicationController
   end
 
   def create
-    @forum = current_user.forums.create(forum_params)
-    redirect_to @forum
+    @forum = current_user.forums.new(forum_params)
+    if @forum.save
+      redirect_to @forum
+    else
+      render :new
+    end
   end
 
   def show
@@ -24,8 +28,12 @@ class ForumsController < ApplicationController
   end
 
   def update
-    find_forum.update(forum_params)
-    redirect_to find_forum
+    @forum = find_forum
+    if @forum.update(forum_params)
+      redirect_to find_forum
+    else
+      render :edit
+    end
   end
 
   def destroy

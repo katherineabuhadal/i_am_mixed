@@ -4,6 +4,7 @@ class Topic < ActiveRecord::Base
   has_many :posts, dependent: :destroy
   belongs_to :forum
 
+  validates :name, presence: true
   accepts_nested_attributes_for :posts
 
   paginates_per 10

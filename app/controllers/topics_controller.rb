@@ -9,9 +9,12 @@ class TopicsController < ApplicationController
 
   def create
     @forum = find_forum
-    @topic = current_user.topics.create(topic_params)
-
-    redirect_to [@forum, @topic]
+    @topic = current_user.topics.new(topic_params)
+    if @topic.save
+      redirect_to [@forum, @topic]
+    else
+      render :new
+    end
   end
 
   def show

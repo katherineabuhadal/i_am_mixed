@@ -1,11 +1,14 @@
-<h2>Add a new Forum</h2>
-
 <%= form_for @forum do |form| %>
-  <%= form.label :name, "Forum name" %>
-  <%= form.text_field :name %>
+  <fieldset>
+    <h3>Add a new Forum</h3>
+    <%= render "error_messages", target: @forum %>
 
-  <%= form.label :description %>
-  <%= form.text_area :description %>
+    <%= form.label :name, "Forum name" %>
+    <%= form.text_field :name %>
 
-  <%= form.submit "Create Forum" %>
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+
+    <%= form.submit "Create Forum" %>
+  </fieldset>
 <% end %>

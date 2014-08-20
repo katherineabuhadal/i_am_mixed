@@ -15,8 +15,12 @@ class PostsController < ApplicationController
   def create
     @forum = find_forum
     @topic = find_topic
-    current_user.posts.create(post_params)
-    redirect_to [@forum, @topic]
+    @post = current_user.posts.new(post_params)
+    if @post.save
+      redirect_to [@forum, @topic]
+    else
+      render :new
+    end
   end
 
   def edit
@@ -28,9 +32,12 @@ class PostsController < ApplicationController
   def update
     @forum = find_forum
     @topic = find_topic
-    find_post.update(post_params)
-
-    redirect_to [@forum, @topic]
+    @post = find_post
+    if @post.update(post_params)
+      redirect_to [@forum, @topic]
+    else
+      render :edit
+    end
   end
 
   private

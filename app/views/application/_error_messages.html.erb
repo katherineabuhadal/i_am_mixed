@@ -1,0 +1,8 @@
+<% if target.errors.present? %>
+  <p>Please fix the following errors in order to continue</p>
+  <% target.errors.full_messages.each do |message| %>
+    <div class="error">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>

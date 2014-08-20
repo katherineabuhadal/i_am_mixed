@@ -1,28 +1,32 @@
-<h2>Edit Your profile</h2>
-
 <%= form_for [current_user, @profile], html: { multipart: true } do |form| %>
-  <%= form.label :description, "Describe yourself" %>
-  <%= form.text_field :description %>
+  <fieldset>
+    <h3>Edit your profile</h3>
 
-  <%= form.label :birthday, "Enter your birthday" %>
-  <%= form.date_select :birthday, start_year: 1900 %>
+    <%= render "error_messages", target: @profile %>
 
-  <% if @profile.avatar? %>
-    <p>Your current profile picture:<p>
-    <%= image_tag @profile.avatar %>
+    <%= form.label :description, "Describe yourself" %>
+    <%= form.text_field :description %>
 
-    <%= form.label :avatar, "Change your profile picture" %>
-    <%= form.file_field :avatar %>
+    <%= form.label :tag_list, "Add tags" %>
+    <%= form.text_field :tag_list %>
 
-    <%= form.label :image_delete, "Remove Image" %>
-    <%= check_box_tag(:image_delete)  %>
-  <% else %>
-    <%= form.label :avatar, "Upload a profile picture" %>
-    <%= form.file_field :avatar %>
-  <% end %>
+    <%= form.label :birthday, "Enter your birthday" %>
+    <%= form.date_select :birthday, start_year: 1900 %>
 
-  <%= form.label :tag_list, "Add tags" %>
-  <%= form.text_field :tag_list %>
+    <% if @profile.avatar? %>
+      <p>Your current profile picture:<p>
+      <%= image_tag @profile.avatar %>
 
-  <%= form.submit "Update Profile" %>
+      <%= form.label :avatar, "Change your profile picture" %>
+      <%= form.file_field :avatar %>
+
+      <%= form.label :image_delete, "Remove Image" %>
+      <%= check_box_tag(:image_delete)  %>
+    <% else %>
+      <%= form.label :avatar, "Upload a profile picture" %>
+      <%= form.file_field :avatar %>
+    <% end %>
+
+    <%= form.submit "Update Profile" %>
+  </fieldset>
 <% end %>

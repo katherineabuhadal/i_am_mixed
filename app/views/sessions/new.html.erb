@@ -8,6 +8,9 @@
     <div class="sign-in-box">
       <%= form_for :session, url: session_path  do |form| %>
         <div>
+          <%= render "flashes" %>
+        </div>
+        <div>
           <%= form.text_field :username, placeholder: "Enter your username" %>
         </div>
         <div>
