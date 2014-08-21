@@ -1,10 +1,12 @@
 class MessagesController < ApplicationController
+  before_action :require_login
+
   def index
     @messages = current_user.received_messages
   end
 
   def create
-    message = current_user.sent_messages.create(message_params)
+    message = current_user.sent_messages.new(message_params)
     redirect_to [current_user, :profile]
   end
 

@@ -32,6 +32,7 @@
       <% end %>
 
       <%= form_for [story, @response] do |form| %>
+        <%= render "error_messages", target: @response %>
         <%= form.text_area :body, placeholder: "Add a response" %>
         <%= form.submit "Respond" %>
       <% end %>

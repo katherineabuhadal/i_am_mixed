@@ -10,7 +10,9 @@
       <div class="username">
         <h4><%= post.user.username %></h4>
       </div>
-      <%= image_tag post.user.profile.avatar(:small), class: "forum-avatar" %>
+      <%= link_to(user_profile_path(post.user.profile), title: post.user.username) do %>
+      <%= image_tag(post.user.profile.avatar(:small), class: "forum-avatar") %>
+    <% end %>
     </div>
     <div class="post-body">
       <div>
@@ -37,7 +39,7 @@
 </div>
 
 <% if signed_in? %>
-  <%= link_to "Destroy Topic", [@forum, @topic], method: :delete %>
+  <%= button_to "Destroy Topic", [@forum, @topic], method: :delete, class: "round-button" %>
 <% end %>
 
 <%= paginate @topics %>

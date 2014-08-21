@@ -13,11 +13,3 @@
   margin-bottom: $base-line-height;
   overflow: hidden;
 }
-
-.join {
-  @include span-columns(6);
-}
-
-.browse {
-  @include span-columns(6);
-}

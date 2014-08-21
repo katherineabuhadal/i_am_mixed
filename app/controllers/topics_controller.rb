@@ -1,5 +1,6 @@
 class TopicsController < ApplicationController
   before_action :ensure_user_can_delete_topic, only: [:destroy]
+  before_action :require_login, only: [:new, :create, :destroy]
 
   def new
     @forum = find_forum

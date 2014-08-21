@@ -1,5 +1,27 @@
+$logo-background: desaturate($dark-purple, 20);
+
 .page {
   @include span-columns(12);
   margin-bottom: 4em;
   margin-top: 1em;
+}
+
+.logo {
+  background: $logo-background;
+  width: 100%;
+  padding-top: 5em;
+  padding-left: 1em;
+}
+
+.color-bar {
+  background: lighten($logo-background, 5);
+  height: 2em;
+
+  .signed-in {
+    float:right;
+    color: lighten($logo-background, 30);
+    font-weight: 700;
+    padding: .1em;
+    margin-right: .4em;
+  }
 }

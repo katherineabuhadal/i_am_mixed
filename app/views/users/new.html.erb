@@ -1,8 +1,8 @@
 <div class="landing-sign-in">
-  <div>
-    <h3>Sign up!</h3>
-  </div>
+
   <%= form_for @user do |form| %>
+    <fieldset>
+      <h3>Sign up!</h3>
     <%= render "error_messages", target: @user %>
     <div>
       <%= render "flashes" %>
@@ -12,7 +12,8 @@
       <%= form.email_field :email %>
     </div>
     <div>
-      <%= form.text_field :username, placeholder: "Enter a username" %>
+      <%= form.label :username %>
+      <%= form.text_field :username %>
     </div>
     <div>
       <%= form.label :password %>
@@ -24,6 +25,7 @@
     <div>
       <%= form.submit "Sign up" %>
     </div>
+  </fieldset>
   <% end %>
 </div>
 

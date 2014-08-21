@@ -1,4 +1,6 @@
 class StoriesController < ApplicationController
+  before_action :require_login, only: [:new, :edit, :create, :update, :destroy]
+
   def index
     @stories = Story.all.page(params[:page])
     @response = Response.new

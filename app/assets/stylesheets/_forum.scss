@@ -24,16 +24,21 @@
 }
 
 .buttons {
-  @include span-columns(1);
   float: right;
 }
 
 .forum-avatar {
   @include shift(.5);
+
   max-width: 90%;
-  padding: 9%;
+  padding: 10%;
   border-radius: 100%;
-  background: $light-gray;
+  background: transparent;
+  border: 3px solid $light-gray;
+
+  &:hover {
+    border: 3px solid $base-button-color;
+  }
 }
 
 .reply-button {
@@ -45,18 +50,19 @@
   vertical-align: middle;
   white-space: nowrap;
   -webkit-font-smoothing: antialiased;
-  background-color: $round-button-color !important;
   border-radius: 100px !important;
-  color: white;
+  border-color: $hover-round-button-color;
+  color: $hover-round-button-color;
   display: inline-block;
   font-size: $base-font-size;
   font-weight: bold;
   line-height: 1;
   padding: .75em 1em;
   text-decoration: none;
+  text-transform: uppercase;
 
   &:hover {
-    background-color: $hover-round-button-color !important;
+    background-color: $hover-round-button-color;
     color: white;
   }
 }

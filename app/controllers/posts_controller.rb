@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :ensure_user_can_edit_post, only: [:edit, :update]
+  before_action :require_login, only: [:new, :create, :destroy]
 
   def new
     @forum = find_forum

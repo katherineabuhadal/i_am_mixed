@@ -3,7 +3,7 @@
     <a href="" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
     <div class="nav">
       <ul id="navigation-menu">
-        <li class="nav-link"><a href="/search">Search</a></li>
+        <li class="nav-link"><%= link_to "Search", root_path  %></li>
         <% if signed_in? %>
           <li class="nav-link"><%= link_to "My Profile", [current_user, :profile] %></li>
           <% if current_user.admin? %>
@@ -16,15 +16,12 @@
       </ul>
     </div>
     <div class="navigation-tools">
-      <div class="search-bar">
-        <div class="search-and-submit">
-          <input type="search" placeholder="Enter Search" />
-          <button type="submit">
-            <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/search-icon.png" alt="">
-          </button>
-        </div>
-      </div>
-      <%= link_to "New Story", [:new, :story], class: "sign-up" %>
     </div>
+    <% if signed_in? %>
+      <%= link_to "Sign Out", [:sign_out], class: "sign-up" %>
+    <% else %>
+      <%= link_to "Sign In", [:sign_in], class: "sign-up" %>
+    <% end %>
+  </div>
   </div>
 </header>

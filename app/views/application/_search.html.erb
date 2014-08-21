@@ -1,5 +1,6 @@
-<%= form_tag("/search", method: "get") do %>
-  <%= label_tag(:query, "Search for:") %>
-  <%= text_field_tag(:query) %>
-  <%= submit_tag("Search") %>
-<% end %>
+<div class="search-bar">
+  <%= form_tag("/search", method: "get") do %>
+    <%= text_field_tag(:query, nil, placeholder: "Try searching by story, tags, or responses!") %>
+    <%= submit_tag("Search") %>
+  <% end %>
+</div>
