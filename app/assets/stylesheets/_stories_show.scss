@@ -4,7 +4,7 @@
 }
 
 textarea#response_body {
- @include span-columns(9);
+  @include span-columns(9);
   display: inline;
 }
 
@@ -41,32 +41,33 @@ textarea#response_body {
 $side-image-border: 1px solid $base-border-color;
 
 .side-image {
-  background: lighten($light-gray, 10);
-  border-radius: $base-border-radius;
+  background: $light-gray;
 
   @include media($large-screen) {
-    @include row(table);
+    @include span-columns(12);
   }
 
   .images-wrapper {
-    @include background(url('https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/mountains.png'),no-repeat $light-gray scroll);
-    border-bottom: $side-image-border;
-    background-size: cover;
-    display: block;
-    min-height: 12em;
-    padding: 3em;
-
     @include media($large-screen) {
       @include span-columns(4);
-      background-position: bottom;
-      background-size: cover;
-      border-right: $side-image-border;
+    }
+  }
+
+  .story-image {
+    min-width: 100%;
+
+    @include media($large-screen) {
+    padding-top: 1.5em;
+    padding-right: 1.5em;
+    margin: 0;
     }
   }
 
   .content {
     @include span-columns(12);
     padding: 1em 1em 4em 1em;
+    background: lighten($light-gray, 10);
+    margin-right: 0;
 
     @include media($large-screen) {
       @include span-columns(8);
@@ -102,7 +103,7 @@ $side-image-border: 1px solid $base-border-color;
   }
 
   .content .story-link {
-    margin-top: 10em;
+    margin-top: 5em;
     float: right;
   }
 

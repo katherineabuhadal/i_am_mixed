@@ -2,24 +2,26 @@
   <div class="comment-image">
     <%= image_tag response.user.profile.avatar(:medium) %>
   </div>
+
   <div class="comment-content">
     <h1><%= response.user.username %></h1>
     <p><%= response.body %><p>
     <p class="comment-detail">Posted on <%= time_tag response.created_at %></p>
-    <%= link_to "Reply", "#" %>
+
     <% if signed_in? %>
       <% if current_user.has_permission?(response) %>
-        <%= link_to "Delete Response", response, method: :delete %>
+        <%= link_to "Delete", response, method: :delete %>
       <% end %>
     <% end %>
 
-    <% if ! response.child? %>
-      <%= form_for [response, @child] do |form| %>
-        <%= form.label :body, "Reply" %>
-        <%= form.text_area :body %>
-        <%= form.submit "RESPOND", class: "round-button" %>
+    <div class="reply-form">
+      <% if ! response.child? %>
+        <%= form_for [response, @child] do |form| %>
+          <%= form.text_area :body, placeholder: "Reply" %>
+          <%= form.submit "RESPOND", class: "round-button" %>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
 
     <div class="replies">
       <%= render response.children %>

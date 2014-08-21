@@ -1,29 +1,35 @@
-<h2>Welcome to My Profile</h2>
-<p>Here you can add photos, personal information, and create galleries.</p>
-
-<% if current_user.created?(@profile) %>
-  <p><%= link_to "Edit Profile", [:edit, @user, @profile] %></p>
-<% end %>
-
-<div>
-  <%= image_tag @profile.avatar.url(:medium), class: "profile-photo" %>
-</div>
-
 <div class="profile-box">
-  <h3><%= @profile.username %></h3>
-  <p>Birthday: <%= @profile.birthday %></p>
+  <%= image_tag @profile.avatar.url(:small), class: "profile-photo" %>
+
+  <div class="profile-info">
+    <h3><%= @profile.username %>'s Profile</h3>
+    <p>Birthday: <%= @profile.birthday %></p>
+
+    <% if signed_in? %>
+      <% if current_user.created?(@profile) %>
+        <%= button_to "Edit Profile", [:edit, @user, @profile], method: :get %>
+        <%= button_to "Inbox", [@user, :messages], method: :get %>
+      <% end %>
+    <% end %>
+  </div>
+
   <p><%= @profile.description %></p>
 
-  <% @profile.tags.each do |tag| %>
-    <%= link_to tag.name, tag %>
+  <div class="tags">
+    <% @profile.tags.each do |tag| %>
+      <%= link_to tag.name, tag, class: "tag" %>
+    <% end %>
+  </div>
+
+  <% if @user != current_user %>
+    <fieldset>
+      <p>Send <%= @profile.username %> a message!</p>
+
+      <%= form_for [@user, @message] do |form| %>
+        <%= render "error_messages", target: @message %>
+        <%= form.text_area :body, placeholder: "Enter message here" %>
+        <%= form.submit "Message" %>
+      <% end %>
+    </fieldset>
   <% end %>
 </div>
-
-<% if @user != current_user %>
-  <%= form_for [@user, @message] do |form| %>
-    <%= form.text_area :body, placeholder: "Enter message here" %>
-    <%= form.submit "Message" %>
-  <% end %>
-<% end %>
-
-<%= link_to "Inbox", [@user, :messages] %>

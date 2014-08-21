@@ -1,10 +1,6 @@
 <div>
 
-<div class="side-image">
-  <div class="images-wrapper"></div>
-    <div class="story-image">
-      <%= image_tag @story.image %>
-    </div>
+  <div class="side-image">
   <div class="content">
     <h4><%= @story.user.username %></h4>
     <h1><%= @story.title %></h1>
@@ -28,11 +24,14 @@
       <% end %>
     </div>
   </div>
+
+  <div class="images-wrapper">
+      <%= image_tag @story.image, class: "story-image" %>
+  </div>
 </div>
 
-  <h4><%= @story.responses.count %> Responses</h4>
-
   <div class="comments-container">
+  <h4><%= @story.responses.count %> Responses</h4>
     <div class="response-box">
       <%= form_for [@story, @response] do |form| %>
         <%= form.text_area :body, class: "comment-input" %>

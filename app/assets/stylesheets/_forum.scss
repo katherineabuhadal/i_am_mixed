@@ -1,19 +1,6 @@
-.user-info {
-  @include span-columns(3);
-  background: lighten($light-gray, 10);
-  padding: 1em;
-}
-
-.user-info h4 {
-  @include shift(1.5);
-}
-
-.post-body {
-  @include span-columns(8);
-}
-
 .post {
-  @include span-columns(11);
+  display: table;
+  @include span-columns(12);
   @include clearfix;
   $tab-border-color: $base-border-color;
   $tab-border: 1px solid $tab-border-color;
@@ -21,19 +8,47 @@
   border: $tab-border;
   margin-bottom: $base-line-height;
   overflow: hidden;
-}
+  min-height: 15em;
 
-.buttons {
-  @include span-columns(1);
-  float: right;
-}
+  .user-info {
+    background: lighten($light-gray, 10);
+    padding: 1em;
+    display: table-cell;
+    vertical-align:top;
+    min-width: 15em;
 
-.forum-avatar {
-  @include shift(.5);
-  max-width: 90%;
-  padding: 9%;
-  border-radius: 100%;
-  background: $light-gray;
+    h4 {
+      margin-bottom: .5em;
+      text-align: center;
+    }
+
+    .forum-avatar {
+      @include shift(.5);
+      max-width: 90%;
+      padding: 10%;
+      border-radius: 100%;
+      background: transparent;
+      border: 3px solid $light-gray;
+
+      &:hover {
+        border: 3px solid $base-button-color;
+      }
+    }
+  }
+
+  .post-text {
+    padding: 1em;
+    vertical-align:top;
+    display: table-cell;
+
+    .time {
+      font-weight: 700;
+    }
+
+    .post-body {
+      min-height: 14em;
+    }
+  }
 }
 
 .reply-button {
@@ -45,18 +60,19 @@
   vertical-align: middle;
   white-space: nowrap;
   -webkit-font-smoothing: antialiased;
-  background-color: $round-button-color !important;
   border-radius: 100px !important;
-  color: white;
+  border-color: $hover-round-button-color;
+  color: $hover-round-button-color;
   display: inline-block;
   font-size: $base-font-size;
   font-weight: bold;
   line-height: 1;
   padding: .75em 1em;
   text-decoration: none;
+  text-transform: uppercase;
 
   &:hover {
-    background-color: $hover-round-button-color !important;
+    background-color: $hover-round-button-color;
     color: white;
   }
 }

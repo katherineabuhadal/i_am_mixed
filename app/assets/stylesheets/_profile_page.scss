@@ -1,18 +1,23 @@
 .profile-photo {
-  @include span-columns(2);
   border-radius: 100%;
+  max-width: 30%;
+  padding: 3%;
+  border-radius: 100%;
+  background: $light-gray;
 }
 
-.profile-box { // small screens: accordion
+.profile-box {
   $tab-border-color: $base-border-color;
-  $tab-border: 1px solid $tab-border-color;
+  $tab-border: 3px solid $tab-border-color;
   $tab-border-radius: $base-border-radius;
   $tab-content-background: lighten($tab-border-color, 10);
   $tab-active-color: $tab-content-background;
   $tab-inactive-color: $base-body-color;
   $vertical-tabs-height: em(300);
   $vertical-tab-mode: $medium-screen;
-  padding: 1em;
+  padding: 2em;
+  width: 90%;
+  margin-top: 1em;
 
   @include clearfix;
   border-radius: $tab-border-radius;
@@ -20,116 +25,39 @@
   margin-bottom: $base-line-height;
   overflow: hidden;
 
-  .vertical-tabs {
-    display: none;
+  .profile-info {
+    float:right;
+    width: 75%;
+  }
 
-    @include media($vertical-tab-mode) {
-      background-color: $tab-inactive-color;
-      display: inline;
-      float: left;
-      height: $vertical-tabs-height;
-      width: 20%;
+  input {
+    display:inline;
+  }
+
+  fieldset {
+    width: 50%;
+    float: right;
+
+    input {
+      float:right;
     }
+  }
+
+  .tags {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    max-width: 50%;
+    float:left;
+
+    .tag {
+      margin-top: .25em;
+      margin-bottom: .25em;
+    }
+  }
+
+  textarea {
+    min-height: 150px;
+    float: right;
   }
 }
-
-.vertical-tabs-container { // small screens: accordion
-  $tab-border-color: $base-border-color;
-  $tab-border: 1px solid $tab-border-color;
-  $tab-border-radius: $base-border-radius;
-  $tab-content-background: lighten($tab-border-color, 10);
-  $tab-active-color: $tab-content-background;
-  $tab-inactive-color: $base-body-color;
-  $vertical-tabs-height: em(300);
-  $vertical-tab-mode: $medium-screen;
-
-  @include clearfix;
-  border-radius: $tab-border-radius;
-  border: $tab-border;
-  margin-bottom: $base-line-height;
-  overflow: hidden;
-
-  .vertical-tabs {
-    display: none;
-
-    @include media($vertical-tab-mode) {
-      background-color: $tab-inactive-color;
-      display: inline;
-      float: left;
-      height: $vertical-tabs-height;
-      width: 20%;
-    }
-  }
-
-  .vertical-tab {
-    @include media($vertical-tab-mode) {
-      border-bottom: $tab-border;
-      display: block;
-      font-weight: bold;
-      margin-right: -1px;
-      padding: $base-line-height/2 $gutter/2;
-
-      &.is-active {
-        background-color: $tab-content-background;
-        margin-right: -1px;
-      }
-    }
-  }
-
-  .vertical-tab:focus {
-    outline: none; 
-  }
-
-  .vertical-tab-content-container {
-    display: block;
-    margin: 0 auto;
-
-    & a:focus { 
-      outline: none; 
-    }
-
-    @include media($vertical-tab-mode) {
-      @include inline-block;
-      @include size(80% $vertical-tabs-height);
-      background-color: $tab-content-background;
-    }
-  }
-
-  .vertical-tab-content {
-    background-color: $tab-content-background;
-    padding: $base-line-height $gutter;
-
-    @include media($vertical-tab-mode) {
-      border: none;
-      display: none;
-    }
-  }
-
-  .vertical-tab-accordion-heading {
-    background-color: $tab-inactive-color;
-    border-top: $tab-border;
-    cursor: pointer;
-    display: block;
-    font-weight: bold;
-    padding: $base-line-height/2 $gutter/2;
-
-    &:hover {
-      color: $base-accent-color;
-    }
-
-    &:first-child {
-      border-top: none;
-    }
-
-    &.is-active {
-      background: $tab-active-color;
-      border-bottom: none;
-    }
-
-    @include media($vertical-tab-mode) {
-      display: none;
-    }
-  }
-}
-
 // Based on code by Jett Miller jettmiller.net

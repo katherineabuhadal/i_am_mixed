@@ -1,0 +1,12 @@
+.search-bar {
+  input#query {
+    width: 90%;
+    display:inline;
+    height: 3em;
+  }
+
+  input[type="submit"] {
+    float:right;
+    height: 3em;
+  }
+}
