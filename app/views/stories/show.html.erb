@@ -1,11 +1,6 @@
 <div>
 
-<div class="side-image">
-  <div class="images-wrapper">
-      <%= image_tag @story.image %>
-</div>
-    <div class="story-image">
-    </div>
+  <div class="side-image">
   <div class="content">
     <h4><%= @story.user.username %></h4>
     <h1><%= @story.title %></h1>
@@ -28,6 +23,10 @@
         <% end %>
       <% end %>
     </div>
+  </div>
+
+  <div class="images-wrapper">
+      <%= image_tag @story.image, class: "story-image" %>
   </div>
 </div>
 

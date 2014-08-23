@@ -11,8 +11,8 @@
         <h4><%= post.user.username %></h4>
       </div>
       <%= link_to(user_profile_path(post.user.profile), title: post.user.username) do %>
-      <%= image_tag(post.user.profile.avatar(:small), class: "forum-avatar") %>
-    <% end %>
+        <%= image_tag(post.user.profile.avatar(:small), class: "forum-avatar") %>
+      <% end %>
     </div>
     <div class="post-body">
       <div>
