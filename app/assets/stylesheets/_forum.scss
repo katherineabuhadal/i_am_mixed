@@ -1,19 +1,6 @@
-.user-info {
-  @include span-columns(3);
-  background: lighten($light-gray, 10);
-  padding: 1em;
-}
-
-.user-info h4 {
-  @include shift(1.5);
-}
-
-.post-body {
-  @include span-columns(8);
-}
-
 .post {
-  @include span-columns(11);
+  display: table;
+  @include span-columns(12);
   @include clearfix;
   $tab-border-color: $base-border-color;
   $tab-border: 1px solid $tab-border-color;
@@ -21,23 +8,46 @@
   border: $tab-border;
   margin-bottom: $base-line-height;
   overflow: hidden;
-}
+  min-height: 15em;
 
-.buttons {
-  float: right;
-}
+  .user-info {
+    background: lighten($light-gray, 10);
+    padding: 1em;
+    display: table-cell;
+    vertical-align:top;
+    min-width: 15em;
 
-.forum-avatar {
-  @include shift(.5);
+    h4 {
+      margin-bottom: .5em;
+      text-align: center;
+    }
 
-  max-width: 90%;
-  padding: 10%;
-  border-radius: 100%;
-  background: transparent;
-  border: 3px solid $light-gray;
+    .forum-avatar {
+      @include shift(.5);
+      max-width: 90%;
+      padding: 10%;
+      border-radius: 100%;
+      background: transparent;
+      border: 3px solid $light-gray;
 
-  &:hover {
-    border: 3px solid $base-button-color;
+      &:hover {
+        border: 3px solid $base-button-color;
+      }
+    }
+  }
+
+  .post-text {
+    padding: 1em;
+    vertical-align:top;
+    display: table-cell;
+
+    .time {
+      font-weight: 700;
+    }
+
+    .post-body {
+      min-height: 14em;
+    }
   }
 }
 

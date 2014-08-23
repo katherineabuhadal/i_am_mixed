@@ -30,9 +30,8 @@
   </div>
 </div>
 
-  <h4><%= @story.responses.count %> Responses</h4>
-
   <div class="comments-container">
+  <h4><%= @story.responses.count %> Responses</h4>
     <div class="response-box">
       <%= form_for [@story, @response] do |form| %>
         <%= form.text_area :body, class: "comment-input" %>

@@ -14,9 +14,9 @@
         <%= image_tag(post.user.profile.avatar(:small), class: "forum-avatar") %>
       <% end %>
     </div>
-    <div class="post-body">
-      <div>
-        <p>Posted on: <%= time_tag post.created_at %></p>
+    <div class="post-text">
+      <div class="post-body">
+        <p class="time">Posted on: <%= time_tag post.created_at %></p>
         <p><%= post.body %></p>
       </div>
       <div class="buttons">
