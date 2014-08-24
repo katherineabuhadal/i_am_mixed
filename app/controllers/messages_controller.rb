@@ -6,7 +6,7 @@ class MessagesController < ApplicationController
   end
 
   def create
-    message = current_user.sent_messages.new(message_params)
+    current_user.sent_messages.create(message_params)
     redirect_to [current_user, :profile]
   end
 

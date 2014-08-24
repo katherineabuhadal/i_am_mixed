@@ -2,10 +2,12 @@
   <div class="comment-image">
     <%= image_tag response.user.profile.avatar(:medium) %>
   </div>
+
   <div class="comment-content">
     <h1><%= response.user.username %></h1>
     <p><%= response.body %><p>
     <p class="comment-detail">Posted on <%= time_tag response.created_at %></p>
+
     <% if signed_in? %>
       <% if current_user.has_permission?(response) %>
         <%= link_to "Delete", response, method: :delete %>

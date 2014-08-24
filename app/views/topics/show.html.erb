@@ -39,7 +39,9 @@
 </div>
 
 <% if signed_in? %>
-  <%= button_to "Destroy Topic", [@forum, @topic], method: :delete, class: "round-button" %>
+  <% if current_user.has_permission?(@topic) %>
+    <%= button_to "Destroy Topic", [@forum, @topic], method: :delete, class: "round-button" %>
+  <% end %>
 <% end %>
 
 <%= paginate @topics %>

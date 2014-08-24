@@ -1,20 +1,17 @@
 <div class="profile-box">
   <%= image_tag @profile.avatar.url(:small), class: "profile-photo" %>
 
-
   <div class="profile-info">
+    <h3><%= @profile.username %>'s Profile</h3>
+    <p>Birthday: <%= @profile.birthday %></p>
 
-  <h3><%= @profile.username %>'s Profile</h3>
-  <p>Birthday: <%= @profile.birthday %></p>
-
-  <% if signed_in? %>
-    <% if current_user.created?(@profile) %>
-      <%= button_to "Edit Profile", [:edit, @user, @profile], method: :get %>
-      <%= button_to "Inbox", [@user, :messages], method: :get %>
+    <% if signed_in? %>
+      <% if current_user.created?(@profile) %>
+        <%= button_to "Edit Profile", [:edit, @user, @profile], method: :get %>
+        <%= button_to "Inbox", [@user, :messages], method: :get %>
+      <% end %>
     <% end %>
-  <% end %>
-
-</div>
+  </div>
 
   <p><%= @profile.description %></p>
 
