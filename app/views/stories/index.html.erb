@@ -5,18 +5,90 @@
 </div>
 
 <script>
-  $(document).ready(function(){
-      $('textarea#response_body').click(function() {
-        event.stopPropagation();
-        $(this).next().show()
+$(document).ready(function(){
+    $('textarea#response_body').click(function() {
+      event.stopPropagation();
+      $(this).next().show()
       });
 
-      $('body').click(function(event){
-        $('#new_response input[type=submit]').hide();
+    $('body').click(function(event){
+      $('#new_response input[type=submit]').hide();
       });
-   });
+
+
+    $(".story.card").click(function(event) {
+      event.preventDefault();
+      var id = this.id
+      var num = id.replace("story_","")
+      $.ajax({
+      url: "/stories/" + num + "/like",
+      type: "POST"
+      }).done(function(data){
+        // console.log($(this + ".heart-clicked"));
+        console.log($(".story.card"));
+        console.log($(".heart-clicked", "#story_" + num));
+
+
+        ($(".heart", "#story_" + num)).hide();
+
+        ($(".heart-clicked", "#story_" + num)).show();
+     
+       // $(this + "#story_19.heart").fadeOut();
+       
+       });
+     });
+      //
+      //       $("#unlike").click(function(event){
+      //         event.preventDefault();
+      //         $.ajax({
+      //           url: "/stories/16/like",
+      //           type: "DELETE",
+      //           success: function (data) {
+      //           $(".heart").show
+      //           },
+      //       });
+      //         });
+    });
 </script>
 
 <%= button_to "ADD YOUR STORY", [:new, :story], method: :get, class: "round-button" %>
 
 <%= paginate @stories %>
+
+
+
+<%# $("#new_task_form").submit(function(){
+<%#
+  <%#   $.post(
+<%#     "/tasks", 
+<%#     $("#new_task_form").serialize()
+<%#     ).done(function(data){
+<%#       $("#tasks").prepend(data);
+<%#       $("#error_messages").html("");
+<%#       $("#task_title", "#task_body").val("");
+<%#     }).fail(function(xhr){
+<%#       var data = xhr.responseText;
+<%#       $("#error_messages").html(data)
+<%#     });
+<%#   return false;
+<%# });
+<%#
+  <%# $("#tasks").on("click", ".completed_checkbox", function(event) {
+<%#   var formEl = $(event.target).parents("form");
+<%#   var action = formEl.prop("action")
+<%#
+  <%#   $.ajax({
+<%#     type: "PATCH",
+<%#     url: action,
+<%#     data: formEl.serialize()
+<%#   }).done(function() {
+<%#     formEl.parents("li").fadeOut();
+<%#   });
+<%#
+  <%# });
+<%#
+  <%# $(".delete").click(function(event) {
+<%#   $(event.target).hide()
+<%#   return false; 
+<%# });
+<%#

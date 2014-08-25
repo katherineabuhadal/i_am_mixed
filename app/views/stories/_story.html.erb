@@ -19,13 +19,13 @@
     <ul>
       <% if signed_in? && current_user.likes?(story) %>
         <li>
-        <%= link_to([story, :like], method: :delete) do %>
+        <%= link_to("#") do %>
           <span><div class="heart-clicked"></div></span>
         <% end %>
         </li>
       <% else %>
         <li>
-        <%= link_to([story, :like], method: :post) do %>
+        <%= link_to("#") do %>
           <span><div class="heart"></div></span>
         <% end %>
         </li>
