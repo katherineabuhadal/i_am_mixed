@@ -32,6 +32,8 @@ Rails.application.routes.draw do
 
   resource :admin_dashboard, only: [:show]
 
+  get "/contact", to: "high_voltage/pages#show", id: "contact"
+  get "/about", to: "high_voltage/pages#show", id: "about"
   get "/sign-up", to: "users#new", as: :sign_up
   get "/sign-out", to: "sessions#destroy", as: :sign_out
   get "/sign-in", to: "sessions#new", as: :sign_in
