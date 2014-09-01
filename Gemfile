@@ -22,6 +22,7 @@ gem 'gretel'
 gem 'gibbon', '~> 1.1.3'
 gem 'validates_email_format_of'
 gem 'high_voltage', '~> 2.2.1'
+gem 'aws-sdk'
 
 group :development do
   gem 'letter_opener'
