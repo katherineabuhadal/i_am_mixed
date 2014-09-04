@@ -5,6 +5,7 @@ class Story < ActiveRecord::Base
   belongs_to :user
   has_many :likes, dependent: :destroy
   has_many :responses, dependent: :destroy
+  has_many :top_level_responses, -> { where parent_id: nil }, class_name: "Response", dependent: :destroy
   has_many :taggings, as: :taggable
   has_many :tags, through: :taggings
 
