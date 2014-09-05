@@ -11,7 +11,9 @@ class SessionsController < ApplicationController
     if sign_in(user)
       redirect_to root_path
     else
-      flash[:error] = "There was a problem with your login credentials, please make sure you have the correct username and password"
+      flash[:error] = "There was a problem with your login credentials,
+                      please make sure you have the correct username and password
+                      and that you have confirmed your account"
       render :new
     end
   end
