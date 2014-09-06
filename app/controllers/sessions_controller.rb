@@ -13,7 +13,8 @@ class SessionsController < ApplicationController
     else
       flash[:error] = "There was a problem with your login credentials,
                       please make sure you have the correct username and password
-                      and that you have confirmed your account"
+                      and that you have confirmed your account.
+                      #{view_context.link_to(' Forgot Password?', [:new, :password_reset])}".html_safe
       render :new
     end
   end

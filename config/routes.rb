@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   end
 
   resource :email_confirmation, only: [:new, :create]
+  resource :password_reset, only: [:new, :create]
 
   resources :tags, only: [:show]
   resource :search, only: [:show]
