@@ -10,8 +10,8 @@
             <li class="nav-link"><%= link_to "Admin", :admin_dashboard %></li>
           <% end %>
         <% end %>
-        <li class="nav-link"><a href="/about">About</a></li>
-        <li class="nav-link"><a href="/contact">Contact</a></li>
+        <li class="nav-link"><%= link_to "About", [:new, :contact_form] %></li>
+        <li class="nav-link"><%= link_to "Resouces", :resources %></li>
         <li class="nav-link"><%= link_to "Forums", :forums %></li>
       </ul>
     </div>

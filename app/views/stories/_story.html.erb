@@ -3,7 +3,7 @@
     <%= image_tag story.image %>
   </div>
   <div class="card-header">
-    <%= story.title %>
+    <%= link_to story.title, story %>
   </div>
   <div class="card-copy">
     <p><%= truncate(story.body, length: 200, separator: ' ') { link_to " READ MORE >>", story } %></p>

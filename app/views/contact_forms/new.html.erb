@@ -1,0 +1,33 @@
+<fieldset>
+  <h3>About</h3>
+  <h5>The why</h5>
+    <p>
+    My name is Katherine Abu Hadal and I created I AM MIXED with the goal of creating an online community so
+    people of different ethnic backgrounds could have a space to talk about issues relevant to them.
+    </p>
+
+    <p>If you have feedback on the website or otherwise want to get in touch, feel free to contact me.</p>
+
+  <h5>The how</h5>
+    <p>
+    This site was written in Ruby on Rails and JQuery and styled in SCSS with Bourbon, Bitters, Neat, and Refills.
+    The code for this project is available <a href= "https://github.com/katherineabuhadal/i_am_mixed">here</a>.
+    </p>
+
+  <h3>Contact</h3>
+
+  <%= form_for @contact_form do |form| %>
+    <%= render "error_messages", target: @contact_form %>
+
+    <%= form.label :name, "Name" %>
+    <%= form.text_field :name %>
+
+    <%= form.label :email, "Email" %>
+    <%= form.text_field :email %>
+
+    <%= form.label :message, "Enter your message" %>
+    <%= form.text_area :message %>
+
+    <%= form.submit "Submit" %>
+  <% end %>
+</fieldset>

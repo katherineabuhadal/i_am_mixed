@@ -97,6 +97,9 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    mail_form (1.5.0)
+      actionmailer (>= 3.2, < 5)
+      activemodel (>= 3.2, < 5)
     mandrill-api (1.0.52)
       excon (>= 0.16.0, < 1.0)
       json (>= 1.7.7, < 2.0)
@@ -221,6 +224,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   letter_opener
+  mail_form
   mandrill-api (~> 1.0.52)
   monban
   monban-generators

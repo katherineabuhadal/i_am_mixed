@@ -31,9 +31,10 @@ Rails.application.routes.draw do
   end
 
   resource :admin_dashboard, only: [:show]
+  resources :contact_forms, only: [:new, :create]
 
-  get "/contact", to: "high_voltage/pages#show", id: "contact"
-  get "/about", to: "high_voltage/pages#show", id: "about"
+  get "/resources", to: "high_voltage/pages#show", id: "resources"
+  get "/contact_confirmation", to: "high_voltage/pages#show", id: "contact_confirmation"
   get "/sign-up", to: "users#new", as: :sign_up
   get "/sign-out", to: "sessions#destroy", as: :sign_out
   get "/sign-in", to: "sessions#new", as: :sign_in
