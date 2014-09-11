@@ -23,6 +23,7 @@ gem 'gibbon', '~> 1.1.3'
 gem 'validates_email_format_of'
 gem 'high_voltage', '~> 2.2.1'
 gem 'aws-sdk'
+gem 'mandrill-api', '~> 1.0.52'
 
 group :development do
   gem 'letter_opener'
